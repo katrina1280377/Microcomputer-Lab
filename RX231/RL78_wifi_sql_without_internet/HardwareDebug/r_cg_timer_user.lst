@@ -1,0 +1,455 @@
+   1                             	r8	=	0xffef0
+   2                             	r16	=	0xffee8
+   3                             	r24	=	0xffee0
+   4                             	r9	=	0xffef1
+   5                             	r17	=	0xffee9
+   6                             	r25	=	0xffee1
+   7                             	r10	=	0xffef2
+   8                             	r18	=	0xffeea
+   9                             	r26	=	0xffee2
+  10                             	r11	=	0xffef3
+  11                             	r19	=	0xffeeb
+  12                             	r27	=	0xffee3
+  13                             	r12	=	0xffef4
+  14                             	r20	=	0xffeec
+  15                             	r28	=	0xffee4
+  16                             	r13	=	0xffef5
+  17                             	r21	=	0xffeed
+  18                             	r29	=	0xffee5
+  19                             	r14	=	0xffef6
+  20                             	r22	=	0xffeee
+  21                             	r30	=	0xffee6
+  22                             	r15	=	0xffef7
+  23                             	r23	=	0xffeef
+  24                             	r31	=	0xffee7
+  25                             	MDUC	=	0xf00e8
+  26                             	MDAL	=	0xffff0
+  27                             	MDAH	=	0xffff2
+  28                             	MDBL	=	0xffff6
+  29                             	MDBH	=	0xffff4
+  30                             	MDCL	=	0xf00e0
+  31                             	MDCH	=	0xf00e2
+  32                             	.text
+  33                             	.Ltext0:
+  34                             		.global	_t
+  35                             	.bss
+  36                             		.balign 2
+  39                             	_t:
+  40 0000 00 00 00 00 00 00       		.zero	6
+  41                             		.global	_sec
+  42                             		.balign 2
+  45                             	_sec:
+  46 0006 00 00                   		.zero	2
+  47                             		.global	_delay_sec
+  48                             		.balign 2
+  51                             	_delay_sec:
+  52 0008 00 00                   		.zero	2
+  53                             		.global	___modhi3
+  54                             		.global	___divhi3
+  55                             	.text
+  56                             		.global	_r_tau0_channel0_interrupt
+  58                             	_r_tau0_channel0_interrupt:
+  59                             	.LFB0:
+  60                             		.file 1 "../src/r_cg_timer_user.c"
+   1:../src/r_cg_timer_user.c **** /**************************************************************************************************
+   2:../src/r_cg_timer_user.c **** * DISCLAIMER
+   3:../src/r_cg_timer_user.c **** * This software is supplied by Renesas Electronics Corporation and is only intended for use with Re
+   4:../src/r_cg_timer_user.c **** * No other uses are authorized. This software is owned by Renesas Electronics Corporation and is pr
+   5:../src/r_cg_timer_user.c **** * applicable laws, including copyright laws. 
+   6:../src/r_cg_timer_user.c **** * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIESREGARDING THIS SOFTWARE, WHETHER
+   7:../src/r_cg_timer_user.c **** * OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULA
+   8:../src/r_cg_timer_user.c **** * NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.TO THE MAXIMUM EXTENT PERMITTED N
+   9:../src/r_cg_timer_user.c **** * LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+  10:../src/r_cg_timer_user.c **** * INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS SOFTWARE, E
+  11:../src/r_cg_timer_user.c **** * ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+  12:../src/r_cg_timer_user.c **** * Renesas reserves the right, without notice, to make changes to this software and to discontinue t
+  13:../src/r_cg_timer_user.c **** * of this software. By using this software, you agree to the additional terms and conditions found 
+  14:../src/r_cg_timer_user.c **** * following link:
+  15:../src/r_cg_timer_user.c **** * http://www.renesas.com/disclaimer
+  16:../src/r_cg_timer_user.c **** *
+  17:../src/r_cg_timer_user.c **** * Copyright (C) 2011, 2016 Renesas Electronics Corporation. All rights reserved.
+  18:../src/r_cg_timer_user.c **** ***************************************************************************************************
+  19:../src/r_cg_timer_user.c **** 
+  20:../src/r_cg_timer_user.c **** /**************************************************************************************************
+  21:../src/r_cg_timer_user.c **** * File Name    : r_cg_timer_user.c
+  22:../src/r_cg_timer_user.c **** * Version      : CodeGenerator for RL78/G12 V2.03.04.01 [11 Nov 2016]
+  23:../src/r_cg_timer_user.c **** * Device(s)    : R5F1026A
+  24:../src/r_cg_timer_user.c **** * Tool-Chain   : GCCRL78
+  25:../src/r_cg_timer_user.c **** * Description  : This file implements device driver for TAU module.
+  26:../src/r_cg_timer_user.c **** * Creation Date: 2018/6/5
+  27:../src/r_cg_timer_user.c **** ***************************************************************************************************
+  28:../src/r_cg_timer_user.c **** 
+  29:../src/r_cg_timer_user.c **** /**************************************************************************************************
+  30:../src/r_cg_timer_user.c **** Includes
+  31:../src/r_cg_timer_user.c **** ***************************************************************************************************
+  32:../src/r_cg_timer_user.c **** #include "r_cg_macrodriver.h"
+  33:../src/r_cg_timer_user.c **** #include "r_cg_timer.h"
+  34:../src/r_cg_timer_user.c **** #include "r_cg_port.h"
+  35:../src/r_cg_timer_user.c **** /* Start user code for include. Do not edit comment generated here */
+  36:../src/r_cg_timer_user.c **** /* End user code. Do not edit comment generated here */
+  37:../src/r_cg_timer_user.c **** #include "r_cg_userdefine.h"
+  38:../src/r_cg_timer_user.c **** 
+  39:../src/r_cg_timer_user.c **** /**************************************************************************************************
+  40:../src/r_cg_timer_user.c **** Global variables and functions
+  41:../src/r_cg_timer_user.c **** ***************************************************************************************************
+  42:../src/r_cg_timer_user.c **** /* Start user code for global. Do not edit comment generated here */
+  43:../src/r_cg_timer_user.c **** extern char TIME[21],GET[500];
+  44:../src/r_cg_timer_user.c **** extern char flag,j,F_RESET,F_delay;
+  45:../src/r_cg_timer_user.c **** int t[3]={0},sec=0,delay_sec=0;
+  46:../src/r_cg_timer_user.c **** /* End user code. Do not edit comment generated here */
+  47:../src/r_cg_timer_user.c **** 
+  48:../src/r_cg_timer_user.c **** /**************************************************************************************************
+  49:../src/r_cg_timer_user.c **** * Function Name: r_tau0_channel0_interrupt
+  50:../src/r_cg_timer_user.c **** * Description  : This function is INTTM00 interrupt service routine.
+  51:../src/r_cg_timer_user.c **** * Arguments    : None
+  52:../src/r_cg_timer_user.c **** * Return Value : None
+  53:../src/r_cg_timer_user.c **** ***************************************************************************************************
+  54:../src/r_cg_timer_user.c **** void r_tau0_channel0_interrupt(void)
+  55:../src/r_cg_timer_user.c **** {
+  61                             		.loc 1 55 0
+  62                             		; start of function
+  63                             		; push 18: ax bc de hl r8 r10 r12 r14 r16
+  64                             		; outgoing: 4 bytes
+  65 0000 61 CF                   		sel	rb0
+  66 0002 C1                      		push	ax
+  67                             	.LCFI0:
+  68 0003 C3                      		push	bc
+  69                             	.LCFI1:
+  70 0004 C5                      		push	de
+  71                             	.LCFI2:
+  72 0005 C7                      		push	hl
+  73                             	.LCFI3:
+  74 0006 61 DF                   		sel	rb1
+  75 0008 C1                      		push	ax ; r8
+  76                             	.LCFI4:
+  77 0009 C3                      		push	bc ; r10
+  78                             	.LCFI5:
+  79 000a C5                      		push	de ; r12
+  80                             	.LCFI6:
+  81 000b C7                      		push	hl ; r14
+  82                             	.LCFI7:
+  83 000c 61 EF                   		sel	rb2
+  84 000e C1                      		push	ax ; r16
+  85                             	.LCFI8:
+  86 000f 61 CF                   		sel	rb0
+  87 0011 20 04                   		subw	sp, #4
+  88                             	.LCFI9:
+  56:../src/r_cg_timer_user.c ****     /* Start user code. Do not edit comment generated here */
+  57:../src/r_cg_timer_user.c **** 
+  58:../src/r_cg_timer_user.c ****     sec++;
+  89                             		.loc 1 58 0
+  90 0013 AF 00 00                		movw	ax, !_sec
+  91 0016 BD F0                   		movw	r8, ax
+  92 0018 A6 F0                   		incw	r8
+  93 001a AD F0                   		movw	ax, r8
+  94 001c BF 00 00                		movw	!_sec, ax
+  59:../src/r_cg_timer_user.c ****     if(F_delay)
+  95                             		.loc 1 59 0
+  96 001f 8F 00 00                		mov	a, !_F_delay
+  97 0022 9D F0                   		mov	r8, a
+  98 0024 D4 F0                   		cmp0	r8
+  99 0026 61 F8                   		 sknz
+ 100 0028 EC 38 00 00             		 br	!!.L2
+  60:../src/r_cg_timer_user.c ****     	delay_sec++;
+ 101                             		.loc 1 60 0
+ 102 002c AF 00 00                		movw	ax, !_delay_sec
+ 103 002f BD F0                   		movw	r8, ax
+ 104 0031 A6 F0                   		incw	r8
+ 105 0033 AD F0                   		movw	ax, r8
+ 106 0035 BF 00 00                		movw	!_delay_sec, ax
+ 107                             	.L2:
+  61:../src/r_cg_timer_user.c ****     if(sec>=60){
+ 108                             		.loc 1 61 0
+ 109 0038 AF 00 00                		movw	ax, !_sec
+ 110 003b BD F0                   		movw	r8, ax
+ 111 003d 44 3B 00                		cmpw	ax, #59
+ 112 0040 71 FF                   		 xor1	CY, a.7
+ 113 0042 61 E3                   		 skh
+ 114 0044 EC 54 00 00             		 br	!!.L3
+  62:../src/r_cg_timer_user.c ****         GET[27]='0';
+ 115                             		.loc 1 62 0
+ 116 0048 51 30                   		mov	a, #48
+ 117 004a 9F 00 00                		mov	!_GET+27, a
+  63:../src/r_cg_timer_user.c ****         flag=1;
+ 118                             		.loc 1 63 0
+ 119 004d E5 00 00                		oneb	!_flag
+  64:../src/r_cg_timer_user.c ****         sec=0;
+ 120                             		.loc 1 64 0
+ 121 0050 F6                      		clrw	ax
+ 122 0051 BF 00 00                		movw	!_sec, ax
+ 123                             	.L3:
+  65:../src/r_cg_timer_user.c ****     }
+  66:../src/r_cg_timer_user.c **** 
+  67:../src/r_cg_timer_user.c ****     if(delay_sec==3)
+ 124                             		.loc 1 67 0
+ 125 0054 AF 00 00                		movw	ax, !_delay_sec
+ 126 0057 BD F0                   		movw	r8, ax
+ 127 0059 44 03 00                		cmpw	ax, #3
+ 128 005c 61 E8                   		 skz
+ 129 005e EC 81 00 00             		 br	!!.L4
+  68:../src/r_cg_timer_user.c ****     {
+  69:../src/r_cg_timer_user.c ****     	 PM6 = _00_PMn0_MODE_OUTPUT | _02_PMn1_MODE_INPUT | _FC_PM6_DEFAULT;
+ 130                             		.loc 1 69 0
+ 131 0062 C9 F0 26 FF             		movw	r8, #-218
+ 132 0066 AD F0                   		movw	ax, r8
+ 133 0068 BD F2                   		movw	r10, ax
+ 134 006a EA F2                   		movw	de, r10
+ 135 006c 51 FE                   		mov	a, #-2
+ 136 006e 99                      		mov	[de], a
+  70:../src/r_cg_timer_user.c **** 
+  71:../src/r_cg_timer_user.c ****     	 P6_bit.no0=0;
+ 137                             		.loc 1 71 0
+ 138 006f C9 F0 06 FF             		movw	r8, #-250
+ 139 0073 AD F0                   		movw	ax, r8
+ 140 0075 BD F2                   		movw	r10, ax
+ 141 0077 FA F2                   		movw	hl, r10
+ 142 0079 71 83                   		clr1	[hl].0 ;insvmisalignqi [hl],#1,#0,#0 {0}
+  72:../src/r_cg_timer_user.c ****     	 F_RESET=1;
+ 143                             		.loc 1 72 0
+ 144 007b E5 00 00                		oneb	!_F_RESET
+  73:../src/r_cg_timer_user.c ****     	 F_delay=0;
+ 145                             		.loc 1 73 0
+ 146 007e F5 00 00                		clrb	!_F_delay
+ 147                             	.L4:
+  74:../src/r_cg_timer_user.c ****     }
+  75:../src/r_cg_timer_user.c **** 	t[2]=(TIME[19]-'0')*10+(TIME[20]-'0');
+ 148                             		.loc 1 75 0
+ 149 0081 8F 00 00                		mov	a, !_TIME+19
+ 150 0084 9D F0                   		mov	r8, a
+ 151 0086 F4 F1                   		clrb	r9
+ 152 0088 AD F0                   		movw	ax, r8
+ 153 008a 04 D0 FF                		addw	ax, #-48
+ 154 008d BD F0                   		movw	r8, ax
+ 155 008f 01                      		addw	ax, ax
+ 156 0090 BD F0                   		movw	r8, ax
+ 157 0092 31 2D                   		shlw	ax, 2
+ 158 0094 BD F2                   		movw	r10, ax
+ 159 0096 AD F0                   		movw	ax, r8
+ 160 0098 06 F2                   		addw	ax, r10
+ 161 009a BD F2                   		movw	r10, ax
+ 162 009c 8F 00 00                		mov	a, !_TIME+20
+ 163 009f 9D F0                   		mov	r8, a
+ 164 00a1 F4 F1                   		clrb	r9
+ 165 00a3 AD F0                   		movw	ax, r8
+ 166 00a5 04 D0 FF                		addw	ax, #-48
+ 167 00a8 BD F0                   		movw	r8, ax
+ 168 00aa AD F2                   		movw	ax, r10
+ 169 00ac 06 F0                   		addw	ax, r8
+ 170 00ae BD F0                   		movw	r8, ax
+ 171 00b0 BF 00 00                		movw	!_t+4, ax
+  76:../src/r_cg_timer_user.c **** 	t[1]=(TIME[16]-'0')*10+(TIME[17]-'0');
+ 172                             		.loc 1 76 0
+ 173 00b3 8F 00 00                		mov	a, !_TIME+16
+ 174 00b6 9D F0                   		mov	r8, a
+ 175 00b8 F4 F1                   		clrb	r9
+ 176 00ba AD F0                   		movw	ax, r8
+ 177 00bc 04 D0 FF                		addw	ax, #-48
+ 178 00bf BD F0                   		movw	r8, ax
+ 179 00c1 01                      		addw	ax, ax
+ 180 00c2 BD F0                   		movw	r8, ax
+ 181 00c4 31 2D                   		shlw	ax, 2
+ 182 00c6 BD F2                   		movw	r10, ax
+ 183 00c8 AD F0                   		movw	ax, r8
+ 184 00ca 06 F2                   		addw	ax, r10
+ 185 00cc BD F2                   		movw	r10, ax
+ 186 00ce 8F 00 00                		mov	a, !_TIME+17
+ 187 00d1 9D F0                   		mov	r8, a
+ 188 00d3 F4 F1                   		clrb	r9
+ 189 00d5 AD F0                   		movw	ax, r8
+ 190 00d7 04 D0 FF                		addw	ax, #-48
+ 191 00da BD F0                   		movw	r8, ax
+ 192 00dc AD F2                   		movw	ax, r10
+ 193 00de 06 F0                   		addw	ax, r8
+ 194 00e0 BD F0                   		movw	r8, ax
+ 195 00e2 BF 00 00                		movw	!_t+2, ax
+  77:../src/r_cg_timer_user.c **** 	t[0]=(TIME[13]-'0')*10+(TIME[14]-'0');
+ 196                             		.loc 1 77 0
+ 197 00e5 8F 00 00                		mov	a, !_TIME+13
+ 198 00e8 9D F0                   		mov	r8, a
+ 199 00ea F4 F1                   		clrb	r9
+ 200 00ec AD F0                   		movw	ax, r8
+ 201 00ee 04 D0 FF                		addw	ax, #-48
+ 202 00f1 BD F0                   		movw	r8, ax
+ 203 00f3 01                      		addw	ax, ax
+ 204 00f4 BD F0                   		movw	r8, ax
+ 205 00f6 31 2D                   		shlw	ax, 2
+ 206 00f8 BD F2                   		movw	r10, ax
+ 207 00fa AD F0                   		movw	ax, r8
+ 208 00fc 06 F2                   		addw	ax, r10
+ 209 00fe BD F2                   		movw	r10, ax
+ 210 0100 8F 00 00                		mov	a, !_TIME+14
+ 211 0103 9D F0                   		mov	r8, a
+ 212 0105 F4 F1                   		clrb	r9
+ 213 0107 AD F0                   		movw	ax, r8
+ 214 0109 04 D0 FF                		addw	ax, #-48
+ 215 010c BD F0                   		movw	r8, ax
+ 216 010e AD F2                   		movw	ax, r10
+ 217 0110 06 F0                   		addw	ax, r8
+ 218 0112 BD F0                   		movw	r8, ax
+ 219 0114 BF 00 00                		movw	!_t, ax
+  78:../src/r_cg_timer_user.c **** 
+  79:../src/r_cg_timer_user.c **** 	t[2]++;
+ 220                             		.loc 1 79 0
+ 221 0117 AF 00 00                		movw	ax, !_t+4
+ 222 011a BD F0                   		movw	r8, ax
+ 223 011c A6 F0                   		incw	r8
+ 224 011e AD F0                   		movw	ax, r8
+ 225 0120 BF 00 00                		movw	!_t+4, ax
+  80:../src/r_cg_timer_user.c **** 	t[2]=t[2]%60;
+ 226                             		.loc 1 80 0
+ 227 0123 BD F0                   		movw	r8, ax
+ 228 0125 B8 00                   		movw	[sp], ax
+ 229 0127 30 3C 00                		movw	ax, #60
+ 230 012a B8 02                   		movw	[sp+2], ax
+ 231 012c FC 00 00 00             		call	!!___modhi3
+ 232 0130 AD F0                   		movw	ax, r8
+ 233 0132 BF 00 00                		movw	!_t+4, ax
+  81:../src/r_cg_timer_user.c **** 
+  82:../src/r_cg_timer_user.c ****     if(t[2]==0){
+ 234                             		.loc 1 82 0
+ 235 0135 BD F0                   		movw	r8, ax
+ 236 0137 44 00 00                		cmpw	ax, #0
+ 237 013a 61 E8                   		 skz
+ 238 013c EC 75 01 00             		 br	!!.L5
+  83:../src/r_cg_timer_user.c ****     	t[1]++;
+ 239                             		.loc 1 83 0
+ 240 0140 AF 00 00                		movw	ax, !_t+2
+ 241 0143 BD F0                   		movw	r8, ax
+ 242 0145 A6 F0                   		incw	r8
+ 243 0147 AD F0                   		movw	ax, r8
+ 244 0149 BF 00 00                		movw	!_t+2, ax
+  84:../src/r_cg_timer_user.c ****     	t[1]=t[1]%60;
+ 245                             		.loc 1 84 0
+ 246 014c BD F0                   		movw	r8, ax
+ 247 014e B8 00                   		movw	[sp], ax
+ 248 0150 30 3C 00                		movw	ax, #60
+ 249 0153 B8 02                   		movw	[sp+2], ax
+ 250 0155 FC 00 00 00             		call	!!___modhi3
+ 251 0159 AD F0                   		movw	ax, r8
+ 252 015b BF 00 00                		movw	!_t+2, ax
+  85:../src/r_cg_timer_user.c ****     	if(t[1]==0)t[2]++;
+ 253                             		.loc 1 85 0
+ 254 015e BD F0                   		movw	r8, ax
+ 255 0160 44 00 00                		cmpw	ax, #0
+ 256 0163 61 E8                   		 skz
+ 257 0165 EC 75 01 00             		 br	!!.L5
+ 258                             		.loc 1 85 0 is_stmt 0 discriminator 1
+ 259 0169 AF 00 00                		movw	ax, !_t+4
+ 260 016c BD F0                   		movw	r8, ax
+ 261 016e A6 F0                   		incw	r8
+ 262 0170 AD F0                   		movw	ax, r8
+ 263 0172 BF 00 00                		movw	!_t+4, ax
+ 264                             	.L5:
+  86:../src/r_cg_timer_user.c ****     }
+  87:../src/r_cg_timer_user.c ****     for(j=0;j<3;j++)
+ 265                             		.loc 1 87 0 is_stmt 1
+ 266 0175 F5 00 00                		clrb	!_j
+ 267 0178 EC 12 02 00             		br	!!.L6
+ 268                             	.L7:
+  88:../src/r_cg_timer_user.c ****     	{
+  89:../src/r_cg_timer_user.c ****     	TIME[13+(j*3)]=((t[j]/10)+'0');
+ 269                             		.loc 1 89 0 discriminator 3
+ 270 017c 8F 00 00                		mov	a, !_j
+ 271 017f 9D F0                   		mov	r8, a
+ 272 0181 70                      		mov	x, a 
+ 273 0182 F1                      		clrb	a
+ 274 0183 BD F2                   		movw	r10, ax
+ 275 0185 BD F0                   		movw	r8, ax
+ 276 0187 01                      		addw	ax, ax
+ 277 0188 BD F0                   		movw	r8, ax
+ 278 018a 06 F2                   		addw	ax, r10
+ 279 018c BD F0                   		movw	r8, ax
+ 280 018e 04 0D 00                		addw	ax, #13
+ 281 0191 BD E8                   		movw	r16, ax
+ 282 0193 8F 00 00                		mov	a, !_j
+ 283 0196 9D F0                   		mov	r8, a
+ 284 0198 F4 F1                   		clrb	r9
+ 285 019a AD F0                   		movw	ax, r8
+ 286 019c 01                      		addw	ax, ax
+ 287 019d BD F0                   		movw	r8, ax
+ 288 019f 04 00 00                		addw	ax, #_t
+ 289 01a2 BD F0                   		movw	r8, ax
+ 290 01a4 BD F2                   		movw	r10, ax
+ 291 01a6 FA F2                   		movw	hl, r10
+ 292 01a8 AB                      		movw	ax, [hl]
+ 293 01a9 BD F0                   		movw	r8, ax
+ 294 01ab B8 00                   		movw	[sp], ax
+ 295 01ad 30 0A 00                		movw	ax, #10
+ 296 01b0 B8 02                   		movw	[sp+2], ax
+ 297 01b2 FC 00 00 00             		call	!!___divhi3
+ 298 01b6 8D F0                   		mov	a, r8
+ 299 01b8 0C 30                   		add	a, #48
+ 300 01ba 9D F0                   		mov	r8, a
+ 301 01bc DA E8                   		movw	bc, r16
+ 302 01be 48 00 00                		mov	_TIME[bc], a
+  90:../src/r_cg_timer_user.c ****     	TIME[14+(j*3)]=((t[j]%10)+'0');
+ 303                             		.loc 1 90 0 discriminator 3
+ 304 01c1 8F 00 00                		mov	a, !_j
+ 305 01c4 9D F0                   		mov	r8, a
+ 306 01c6 70                      		mov	x, a 
+ 307 01c7 F1                      		clrb	a
+ 308 01c8 BD F2                   		movw	r10, ax
+ 309 01ca BD F0                   		movw	r8, ax
+ 310 01cc 01                      		addw	ax, ax
+ 311 01cd BD F0                   		movw	r8, ax
+ 312 01cf 06 F2                   		addw	ax, r10
+ 313 01d1 BD F0                   		movw	r8, ax
+ 314 01d3 04 0E 00                		addw	ax, #14
+ 315 01d6 BD E8                   		movw	r16, ax
+ 316 01d8 8F 00 00                		mov	a, !_j
+ 317 01db 9D F0                   		mov	r8, a
+ 318 01dd F4 F1                   		clrb	r9
+ 319 01df AD F0                   		movw	ax, r8
+ 320 01e1 01                      		addw	ax, ax
+ 321 01e2 BD F0                   		movw	r8, ax
+ 322 01e4 04 00 00                		addw	ax, #_t
+ 323 01e7 BD F0                   		movw	r8, ax
+ 324 01e9 BD F2                   		movw	r10, ax
+ 325 01eb FA F2                   		movw	hl, r10
+ 326 01ed AB                      		movw	ax, [hl]
+ 327 01ee BD F0                   		movw	r8, ax
+ 328 01f0 B8 00                   		movw	[sp], ax
+ 329 01f2 30 0A 00                		movw	ax, #10
+ 330 01f5 B8 02                   		movw	[sp+2], ax
+ 331 01f7 FC 00 00 00             		call	!!___modhi3
+ 332 01fb 8D F0                   		mov	a, r8
+ 333 01fd 0C 30                   		add	a, #48
+ 334 01ff 9D F0                   		mov	r8, a
+ 335 0201 DA E8                   		movw	bc, r16
+ 336 0203 48 00 00                		mov	_TIME[bc], a
+  87:../src/r_cg_timer_user.c ****     	{
+ 337                             		.loc 1 87 0 discriminator 3
+ 338 0206 8F 00 00                		mov	a, !_j
+ 339 0209 9D F0                   		mov	r8, a
+ 340 020b A4 F0                   		inc	r8
+ 341 020d 8D F0                   		mov	a, r8
+ 342 020f 9F 00 00                		mov	!_j, a
+ 343                             	.L6:
+  87:../src/r_cg_timer_user.c ****     	{
+ 344                             		.loc 1 87 0 is_stmt 0 discriminator 1
+ 345 0212 8F 00 00                		mov	a, !_j
+ 346 0215 9D F0                   		mov	r8, a
+ 347 0217 4A F0 02                		cmp	r8, #2
+ 348 021a 61 E3                   		 skh
+ 349 021c EC 7C 01 00             		 br	!!.L7
+  91:../src/r_cg_timer_user.c ****     	}
+  92:../src/r_cg_timer_user.c ****     /* End user code. Do not edit comment generated here */
+  93:../src/r_cg_timer_user.c **** }
+ 350                             		.loc 1 93 0 is_stmt 1
+ 351 0220 10 04                   		addw	sp, #4
+ 352 0222 61 EF                   		sel	rb2
+ 353 0224 C0                      		pop	ax ; r16
+ 354 0225 61 DF                   		sel	rb1
+ 355 0227 C6                      		pop	hl ; r14
+ 356 0228 C4                      		pop	de ; r12
+ 357 0229 C2                      		pop	bc ; r10
+ 358 022a C0                      		pop	ax ; r8
+ 359 022b 61 CF                   		sel	rb0
+ 360 022d C6                      		pop	hl
+ 361 022e C4                      		pop	de
+ 362 022f C2                      		pop	bc
+ 363 0230 C0                      		pop	ax
+ 364 0231 61 FC                   		reti
+ 365                             	.LFE0:
+ 433                             	.Letext0:
+ 434                             		.file 2 "../src/iodefine.h"

@@ -1,0 +1,395 @@
+Archive member included because of file (symbol)
+
+C:\PROGRA~2\GCCFOR~2.201\rl78-elf\rl78-elf/lib/gcc/rl78-elf/4.9.2.201701-GNURL78/g13\libgcc.a(divmodhi.o)
+                              ./src/r_cg_timer_user.o (__divhi3)
+
+Allocating common symbols
+Common symbol       size              file
+
+j                   0x2               ./src/r_main.o
+g_uart0_tx_count    0x2               ./src/r_cg_serial.o
+gp_uart0_rx_address
+                    0x2               ./src/r_cg_serial.o
+g_uart0_rx_count    0x2               ./src/r_cg_serial.o
+gp_uart0_tx_address
+                    0x2               ./src/r_cg_serial.o
+l                   0x2               ./src/r_main.o
+no                  0x2               ./src/r_main.o
+g_uart0_rx_length   0x2               ./src/r_cg_serial.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+VEC              0x00000000         0x00000004
+IVEC             0x00000004         0x000000bc
+OPT              0x000000c0         0x00000004
+SEC_ID           0x000000c4         0x0000000a
+OCDSTAD          0x000000ce         0x0000000a
+OCDROM           0x00003e00         0x00000200
+ROM              0x000000d8         0x00003d28
+MIRROR           0x000f2000         0x00001fff
+RAM              0x000ff900         0x000005ff
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.vec            0x00000000        0x4
+ *(.vec)
+ .vec           0x00000000        0x4 ./src/r_cg_vector_table.o
+                0x00000000                HardwareVectors
+
+.vects          0x00000004       0x7c
+ *(.vects)
+ .vects         0x00000004       0x7c ./src/r_cg_vector_table.o
+                0x00000004                Vectors
+
+.option_bytes   0x000000c0        0x4
+ *(.option_bytes)
+ .option_bytes  0x000000c0        0x4 ./src/r_cg_vector_table.o
+                0x000000c0                Option_Bytes
+
+.security_id    0x000000c4        0xa
+ *(.security_id)
+ .security_id   0x000000c4        0xa ./src/r_cg_vector_table.o
+                0x000000c4                Security_Id
+
+.lowtext        0x000000d8        0x0
+ *(.plt)
+ .plt           0x000000d8        0x0 ./src/r_cg_serial.o
+ *(.lowtext)
+                0x000000d8                . = ALIGN (0x2)
+
+.tors           0x000000d8        0x0
+                0x000000d8                __CTOR_LIST__ = .
+                0x000000d8                . = ALIGN (0x2)
+                0x000000d8                ___ctors = .
+ *(.ctors)
+                0x000000d8                ___ctors_end = .
+                0x000000d8                __CTOR_END__ = .
+                0x000000d8                __DTOR_LIST__ = .
+                0x000000d8                ___dtors = .
+ *(.dtors)
+                0x000000d8                ___dtors_end = .
+                0x000000d8                __DTOR_END__ = .
+                0x000000d8                _mdata = .
+
+.text           0x000002f4     0x1712
+ *(.text)
+ .text          0x000002f4       0x3d ./src/r_cg_cgc.o
+                0x000002f4                R_CGC_Create
+ .text          0x00000331       0x14 ./src/r_cg_cgc_user.o
+                0x00000331                R_CGC_Get_ResetSource
+ .text          0x00000345       0x4d ./src/r_cg_port.o
+                0x00000345                R_PORT_Create
+ .text          0x00000392        0x0 ./src/r_cg_port_user.o
+ .text          0x00000392      0x3b9 ./src/r_cg_serial.o
+                0x00000392                R_SAU0_Create
+                0x000003b5                R_UART0_Create
+                0x000005af                R_UART0_Start
+                0x00000637                R_UART0_Stop
+                0x000006a2                R_UART0_Receive
+                0x000006d4                R_UART0_Send
+ .text          0x0000074b      0x17c ./src/r_cg_serial_user.o
+                0x0000074b                r_uart0_interrupt_receive
+                0x0000081f                r_uart0_interrupt_send
+ .text          0x000008c7      0x191 ./src/r_cg_timer.o
+                0x000008c7                R_TAU0_Create
+                0x000009ec                R_TAU0_Channel0_Start
+                0x00000a22                R_TAU0_Channel0_Stop
+ .text          0x00000a58      0x233 ./src/r_cg_timer_user.o
+                0x00000a58                r_tau0_channel0_interrupt
+ .text          0x00000c8b        0xc ./src/r_cg_vector_table.o
+                0x00000c8b                R_Dummy
+ .text          0x00000c97       0x3e ./src/r_hardware_setup.o
+                0x00000c97                R_Systeminit
+                0x00000cc4                HardwareSetup
+ .text          0x00000cd5      0xbca ./src/r_main.o
+                0x00000cd5                main
+                0x000014a9                R_MAIN_UserInit
+                0x000014ad                R_MAIN_CLEAR
+                0x000014e7                FINDWORD
+                0x00001614                R_MAIN_COMMAND
+ .text          0x0000189f       0x60 ./src/r_reset_program.o
+                0x000018a1                PowerON_Reset
+ .text          0x000018ff        0x0 C:\PROGRA~2\GCCFOR~2.201\rl78-elf\rl78-elf/lib/gcc/rl78-elf/4.9.2.201701-GNURL78/g13\libgcc.a(divmodhi.o)
+ *(.text.*)
+ .text.___divhi3
+                0x000018ff       0x60 C:\PROGRA~2\GCCFOR~2.201\rl78-elf\rl78-elf/lib/gcc/rl78-elf/4.9.2.201701-GNURL78/g13\libgcc.a(divmodhi.o)
+                0x000018ff                __divhi3
+ .text.___modhi3
+                0x0000195f       0x61 C:\PROGRA~2\GCCFOR~2.201\rl78-elf\rl78-elf/lib/gcc/rl78-elf/4.9.2.201701-GNURL78/g13\libgcc.a(divmodhi.o)
+                0x0000195f                __modhi3
+ .text.___udivhi3
+                0x000019c0       0x23 C:\PROGRA~2\GCCFOR~2.201\rl78-elf\rl78-elf/lib/gcc/rl78-elf/4.9.2.201701-GNURL78/g13\libgcc.a(divmodhi.o)
+                0x000019c0                __udivhi3
+ .text.___umodhi3
+                0x000019e3       0x23 C:\PROGRA~2\GCCFOR~2.201\rl78-elf\rl78-elf/lib/gcc/rl78-elf/4.9.2.201701-GNURL78/g13\libgcc.a(divmodhi.o)
+                0x000019e3                __umodhi3
+                0x00001a06                etext = .
+                0x00001a06                . = ALIGN (0x2)
+                0x00000000                PROVIDE (__rl78_abs__, 0x0)
+
+.init
+ *(.init)
+
+.fini
+ *(.fini)
+
+.got
+ *(.got)
+ *(.got.plt)
+
+.rodata         0x00002000       0x59
+                0x00002000                . = ALIGN (0x2)
+ *(.rodata)
+ .rodata        0x00002000       0x59 ./src/r_main.o
+                0x00002000                OK
+                0x00002002                time
+                0x00002007                ERROR
+                0x0000200c                CLOSED
+                0x00002012                FAIL
+                0x00002016                ALREADY
+                0x00002027                GOTIP
+                0x00002032                CIPSTART
+ *(.rodata.*)
+                0x00002059                _erodata = .
+
+.frodata
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+.eh_frame
+ *(.eh_frame)
+
+.jcr            0x00002059        0x1
+ *(.jcr)
+                0x0000205a                . = ALIGN (0x2)
+ *fill*         0x00002059        0x1 
+
+.data           0x000ff900      0x21c load address 0x000000d8
+                0x000ff900                . = ALIGN (0x2)
+                0x000ff900                _data = .
+ *(.data)
+ .data          0x000ff900        0x0 ./src/r_cg_cgc.o
+ .data          0x000ff900        0x0 ./src/r_cg_cgc_user.o
+ .data          0x000ff900        0x0 ./src/r_cg_port.o
+ .data          0x000ff900        0x0 ./src/r_cg_port_user.o
+ .data          0x000ff900        0x0 ./src/r_cg_serial.o
+ .data          0x000ff900        0x0 ./src/r_cg_serial_user.o
+ .data          0x000ff900        0x0 ./src/r_cg_timer.o
+ .data          0x000ff900        0x0 ./src/r_cg_timer_user.o
+ .data          0x000ff900        0x0 ./src/r_cg_vector_table.o
+ .data          0x000ff900        0x0 ./src/r_hardware_setup.o
+ .data          0x000ff900      0x21b ./src/r_main.o
+                0x000ff900                TIME
+                0x000ff915                flag
+                0x000ff916                F_RESET
+                0x000ff917                GET
+                0x000ffb0b                CIPSEND
+ .data          0x000ffb1b        0x0 ./src/r_reset_program.o
+ .data          0x000ffb1b        0x0 C:\PROGRA~2\GCCFOR~2.201\rl78-elf\rl78-elf/lib/gcc/rl78-elf/4.9.2.201701-GNURL78/g13\libgcc.a(divmodhi.o)
+ *(.data.*)
+                0x000ffb1c                . = ALIGN (0x2)
+ *fill*         0x000ffb1b        0x1 
+                0x000ffb1c                _edata = .
+                0x0000021c                PROVIDE (__romdatacopysize, SIZEOF (.data))
+
+.bss            0x000ffb1c      0x29c load address 0x000002f4
+                0x000ffb1c                . = ALIGN (0x2)
+                0x000ffb1c                _bss = .
+ *(.bss)
+ .bss           0x000ffb1c        0x0 ./src/r_cg_cgc.o
+ .bss           0x000ffb1c        0x0 ./src/r_cg_cgc_user.o
+ .bss           0x000ffb1c        0x0 ./src/r_cg_port.o
+ .bss           0x000ffb1c        0x0 ./src/r_cg_port_user.o
+ .bss           0x000ffb1c        0x0 ./src/r_cg_serial.o
+ .bss           0x000ffb1c       0x68 ./src/r_cg_serial_user.o
+                0x000ffb1c                command
+                0x000ffb80                i
+                0x000ffb82                tx_flag
+ .bss           0x000ffb84        0x0 ./src/r_cg_timer.o
+ .bss           0x000ffb84        0xa ./src/r_cg_timer_user.o
+                0x000ffb84                t
+                0x000ffb8a                sec
+                0x000ffb8c                delay_sec
+ .bss           0x000ffb8e        0x0 ./src/r_cg_vector_table.o
+ .bss           0x000ffb8e        0x0 ./src/r_hardware_setup.o
+ .bss           0x000ffb8e      0x21a ./src/r_main.o
+                0x000ffb8e                rx
+                0x000ffb8f                s
+                0x000ffd84                now
+                0x000ffd86                old
+                0x000ffd88                count
+                0x000ffd8a                history
+                0x000ffd92                x
+                0x000ffd9a                num
+                0x000ffd9c                k
+                0x000ffd9e                bit
+                0x000ffda0                ok_flag
+                0x000ffda1                count_flag
+                0x000ffda2                F_STACK
+                0x000ffda3                F_START
+                0x000ffda4                F_TIME
+                0x000ffda5                F_STATE
+                0x000ffda6                F_delay
+ .bss           0x000ffda8        0x0 ./src/r_reset_program.o
+ .bss           0x000ffda8        0x0 C:\PROGRA~2\GCCFOR~2.201\rl78-elf\rl78-elf/lib/gcc/rl78-elf/4.9.2.201701-GNURL78/g13\libgcc.a(divmodhi.o)
+ *(.bss.**)
+                0x000ffda8                . = ALIGN (0x2)
+ *(COMMON)
+ COMMON         0x000ffda8        0xa ./src/r_cg_serial.o
+                0x000ffda8                g_uart0_tx_count
+                0x000ffdaa                gp_uart0_rx_address
+                0x000ffdac                g_uart0_rx_count
+                0x000ffdae                gp_uart0_tx_address
+                0x000ffdb0                g_uart0_rx_length
+ COMMON         0x000ffdb2        0x6 ./src/r_main.o
+                0x000ffdb2                j
+                0x000ffdb4                l
+                0x000ffdb6                no
+                0x000ffdb8                . = ALIGN (0x2)
+                0x000ffdb8                _ebss = .
+                0x000ffdb8                _end = .
+                0x00000064                PROVIDE (stack_size, 0x64)
+
+.stack          0x000ffedc        0x0
+                0x000ffedc                _stack = .
+                0x00000001                ASSERT ((_stack > (_end + stack_size)), Error: Too much data - no room left for the stack)
+LOAD ./src/r_cg_cgc.o
+LOAD ./src/r_cg_cgc_user.o
+LOAD ./src/r_cg_port.o
+LOAD ./src/r_cg_port_user.o
+LOAD ./src/r_cg_serial.o
+LOAD ./src/r_cg_serial_user.o
+LOAD ./src/r_cg_timer.o
+LOAD ./src/r_cg_timer_user.o
+LOAD ./src/r_cg_vector_table.o
+LOAD ./src/r_hardware_setup.o
+LOAD ./src/r_main.o
+LOAD ./src/r_reset_program.o
+LOAD libRL78_wifi_sql.a
+START GROUP
+LOAD E:\BEAR\code\RX231\workspace\RL78_wifi_sql_without_internet\HardwareDebug\libRL78_wifi_sql.a
+LOAD C:\PROGRA~2\GCCFOR~2.201\rl78-elf\rl78-elf/lib/gcc/rl78-elf/4.9.2.201701-GNURL78/g13\libgcc.a
+END GROUP
+OUTPUT(RL78_wifi_sql.x elf32-rl78)
+
+.debug_frame    0x00000000      0x39c
+ .debug_frame   0x00000000       0x24 ./src/r_cg_cgc.o
+ .debug_frame   0x00000024       0x2c ./src/r_cg_cgc_user.o
+ .debug_frame   0x00000050       0x24 ./src/r_cg_port.o
+ .debug_frame   0x00000074       0x84 ./src/r_cg_serial.o
+ .debug_frame   0x000000f8       0xf4 ./src/r_cg_serial_user.o
+ .debug_frame   0x000001ec       0x44 ./src/r_cg_timer.o
+ .debug_frame   0x00000230       0x6c ./src/r_cg_timer_user.o
+ .debug_frame   0x0000029c       0x40 ./src/r_cg_vector_table.o
+ .debug_frame   0x000002dc       0x3c ./src/r_hardware_setup.o
+ .debug_frame   0x00000318       0x84 ./src/r_main.o
+
+.debug_info     0x00000000     0x15f0
+ .debug_info    0x00000000      0x133 ./src/r_cg_cgc.o
+ .debug_info    0x00000133       0x7b ./src/r_cg_cgc_user.o
+ .debug_info    0x000001ae      0x19b ./src/r_cg_port.o
+ .debug_info    0x00000349       0x48 ./src/r_cg_port_user.o
+ .debug_info    0x00000391      0x376 ./src/r_cg_serial.o
+ .debug_info    0x00000707      0x1ca ./src/r_cg_serial_user.o
+ .debug_info    0x000008d1      0x30b ./src/r_cg_timer.o
+ .debug_info    0x00000bdc      0x1e9 ./src/r_cg_timer_user.o
+ .debug_info    0x00000dc5      0x108 ./src/r_cg_vector_table.o
+ .debug_info    0x00000ecd       0x7d ./src/r_hardware_setup.o
+ .debug_info    0x00000f4a      0x618 ./src/r_main.o
+ .debug_info    0x00001562       0x8e ./src/r_reset_program.o
+
+.debug_abbrev   0x00000000      0x83b
+ .debug_abbrev  0x00000000       0x82 ./src/r_cg_cgc.o
+ .debug_abbrev  0x00000082       0x53 ./src/r_cg_cgc_user.o
+ .debug_abbrev  0x000000d5       0x8f ./src/r_cg_port.o
+ .debug_abbrev  0x00000164       0x1b ./src/r_cg_port_user.o
+ .debug_abbrev  0x0000017f      0x132 ./src/r_cg_serial.o
+ .debug_abbrev  0x000002b1      0x131 ./src/r_cg_serial_user.o
+ .debug_abbrev  0x000003e2       0xcd ./src/r_cg_timer.o
+ .debug_abbrev  0x000004af       0xec ./src/r_cg_timer_user.o
+ .debug_abbrev  0x0000059b       0x7c ./src/r_cg_vector_table.o
+ .debug_abbrev  0x00000617       0x5c ./src/r_hardware_setup.o
+ .debug_abbrev  0x00000673      0x1b4 ./src/r_main.o
+ .debug_abbrev  0x00000827       0x14 ./src/r_reset_program.o
+
+.debug_aranges  0x00000000      0x178
+ .debug_aranges
+                0x00000000       0x20 ./src/r_cg_cgc.o
+ .debug_aranges
+                0x00000020       0x20 ./src/r_cg_cgc_user.o
+ .debug_aranges
+                0x00000040       0x20 ./src/r_cg_port.o
+ .debug_aranges
+                0x00000060       0x18 ./src/r_cg_port_user.o
+ .debug_aranges
+                0x00000078       0x20 ./src/r_cg_serial.o
+ .debug_aranges
+                0x00000098       0x20 ./src/r_cg_serial_user.o
+ .debug_aranges
+                0x000000b8       0x20 ./src/r_cg_timer.o
+ .debug_aranges
+                0x000000d8       0x20 ./src/r_cg_timer_user.o
+ .debug_aranges
+                0x000000f8       0x20 ./src/r_cg_vector_table.o
+ .debug_aranges
+                0x00000118       0x20 ./src/r_hardware_setup.o
+ .debug_aranges
+                0x00000138       0x20 ./src/r_main.o
+ .debug_aranges
+                0x00000158       0x20 ./src/r_reset_program.o
+
+.debug_line     0x00000000     0x1023
+ .debug_line    0x00000000       0x74 ./src/r_cg_cgc.o
+ .debug_line    0x00000074       0x69 ./src/r_cg_cgc_user.o
+ .debug_line    0x000000dd       0x8d ./src/r_cg_port.o
+ .debug_line    0x0000016a       0x1d ./src/r_cg_port_user.o
+ .debug_line    0x00000187      0x243 ./src/r_cg_serial.o
+ .debug_line    0x000003ca      0x126 ./src/r_cg_serial_user.o
+ .debug_line    0x000004f0      0x124 ./src/r_cg_timer.o
+ .debug_line    0x00000614      0x117 ./src/r_cg_timer_user.o
+ .debug_line    0x0000072b       0x68 ./src/r_cg_vector_table.o
+ .debug_line    0x00000793       0x98 ./src/r_hardware_setup.o
+ .debug_line    0x0000082b      0x699 ./src/r_main.o
+ .debug_line    0x00000ec4      0x15f ./src/r_reset_program.o
+
+.debug_str      0x00000000      0x662
+ .debug_str     0x00000000      0x162 ./src/r_cg_cgc.o
+                                0x16e (size before relaxing)
+ .debug_str     0x00000162       0x40 ./src/r_cg_cgc_user.o
+                                0x179 (size before relaxing)
+ .debug_str     0x000001a2       0x44 ./src/r_cg_port.o
+                                0x18a (size before relaxing)
+ .debug_str     0x000001e6       0x18 ./src/r_cg_port_user.o
+                                0x151 (size before relaxing)
+ .debug_str     0x000001fe      0x144 ./src/r_cg_serial.o
+                                0x2b3 (size before relaxing)
+ .debug_str     0x00000342       0xe2 ./src/r_cg_serial_user.o
+                                0x28d (size before relaxing)
+ .debug_str     0x00000424       0x82 ./src/r_cg_timer.o
+                                0x208 (size before relaxing)
+ .debug_str     0x000004a6       0x4d ./src/r_cg_timer_user.o
+                                0x1b3 (size before relaxing)
+ .debug_str     0x000004f3       0x4c ./src/r_cg_vector_table.o
+                                0x19e (size before relaxing)
+ .debug_str     0x0000053f       0x35 ./src/r_hardware_setup.o
+                                0x16e (size before relaxing)
+ .debug_str     0x00000574       0xee ./src/r_main.o
+                                0x284 (size before relaxing)
+
+.comment        0x00000000       0xa0
+ .comment       0x00000000       0xa0 ./src/r_cg_cgc.o
+                                 0xa1 (size before relaxing)
+ .comment       0x00000000       0xa1 ./src/r_cg_cgc_user.o
+ .comment       0x00000000       0xa1 ./src/r_cg_port.o
+ .comment       0x00000000       0xa1 ./src/r_cg_port_user.o
+ .comment       0x00000000       0xa1 ./src/r_cg_serial.o
+ .comment       0x00000000       0xa1 ./src/r_cg_serial_user.o
+ .comment       0x00000000       0xa1 ./src/r_cg_timer.o
+ .comment       0x00000000       0xa1 ./src/r_cg_timer_user.o
+ .comment       0x00000000       0xa1 ./src/r_cg_vector_table.o
+ .comment       0x00000000       0xa1 ./src/r_hardware_setup.o
+ .comment       0x00000000       0xa1 ./src/r_main.o

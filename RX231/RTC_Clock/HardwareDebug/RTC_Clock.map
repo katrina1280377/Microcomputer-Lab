@@ -1,0 +1,303 @@
+Renesas Optimizing Linker (W2.06.00 )             09-Nov-2017 17:30:47
+
+*** Options ***
+
+-subcommand=LinkerSubCommand.tmp
+-input="./src/cg_src/r_cg_cgc.obj"
+-input="./src/cg_src/r_cg_cgc_user.obj"
+-input="./src/cg_src/r_cg_dbsct.obj"
+-input="./src/cg_src/r_cg_hardware_setup.obj"
+-input="./src/cg_src/r_cg_intprg.obj"
+-input="./src/cg_src/r_cg_main.obj"
+-input="./src/cg_src/r_cg_resetprg.obj"
+-input="./src/cg_src/r_cg_rtc.obj"
+-input="./src/cg_src/r_cg_rtc_user.obj"
+-input="./src/cg_src/r_cg_sbrk.obj"
+-input="./src/cg_src/r_cg_sci.obj"
+-input="./src/cg_src/r_cg_sci_user.obj"
+-input="./src/cg_src/r_cg_vecttbl.obj"
+-start=SU,SI,B_1,R_1,B_2,R_2,B,R/04,PResetPRG,C_1,C_2,C,C$*,D*,W*,L,PIntPRG,P/0FFF80000,EXCEPTVECT/0FFFFFF80,RESETVECT/0FFFFFFFC
+-library=C:\Users\katrina\E2_STU~1\WORKSP~1\RTC_CL~1\HARDWA~2\RTC_Clock.lib
+-noprelink
+-list=RTC_Clock.map
+-show
+-nooptimize
+-debug
+-output=C:\Users\katrina\e2_studio\workspace\RTC_Clock\HardwareDebug\RTC_Clock.abs
+-rom=D=R,D_1=R_1,D_2=R_2
+-nocompress
+-nomessage
+-nologo
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+
+SU
+                                  00000004  00000103       100   4
+SI
+                                  00000104  00000403       300   4
+B_1
+                                  00000404  00000404         0   1
+R_1
+                                  00000404  00000417        14   1
+B_2
+                                  00000418  00000825       40e   2
+R_2
+                                  00000826  00000826         0   1
+B
+                                  00000828  0000082f         8   4
+R
+                                  00000830  00000833         4   4
+PResetPRG
+                                  fff80000  fff8003d        3e   1
+C_1
+                                  fff8003e  fff8003e         0   1
+C_2
+                                  fff8003e  fff8003e         0   1
+C
+                                  fff80040  fff80073        34   4
+C$DSEC
+                                  fff80074  fff80097        24   4
+C$BSEC
+                                  fff80098  fff800af        18   4
+C$INIT
+                                  fff800b0  fff800b0         0   1
+C$VECT
+                                  fff800b0  fff804af       400   4
+C$VTBL
+                                  fff804b0  fff804b0         0   1
+D
+                                  fff804b0  fff804b3         4   4
+D_1
+                                  fff804b4  fff804c7        14   1
+D_2
+                                  fff804c8  fff804c8         0   1
+W
+                                  fff804c8  fff804c8         0   1
+W_1
+                                  fff804c8  fff804c8         0   1
+W_2
+                                  fff804c8  fff804c8         0   1
+L
+                                  fff804c8  fff804c8         0   1
+PIntPRG
+                                  fff804c8  fff804d5         e   1
+P
+                                  fff804d6  fff80a71       59c   1
+EXCEPTVECT
+                                  ffffff80  fffffffb        7c   4
+RESETVECT
+                                  fffffffc  ffffffff         4   4
+
+*** Symbol List ***
+
+SECTION=
+FILE=                               START        END    SIZE
+  SYMBOL                            ADDR        SIZE    INFO      COUNTS  OPT
+
+SECTION=SU
+FILE=.\src\cg_src\r_cg_resetprg.obj
+                                  00000004  00000103       100
+
+SECTION=SI
+FILE=.\src\cg_src\r_cg_resetprg.obj
+                                  00000104  00000403       300
+
+SECTION=R_1
+FILE=.\src\cg_src\r_cg_rtc_user.obj
+                                  00000404  00000417        14
+  _TX
+                                  00000404        14   data ,g         1
+
+SECTION=B_2
+FILE=.\src\cg_src\r_cg_rtc_user.obj
+                                  00000418  0000041f         8
+  _time
+                                  00000418         8   data ,g         1
+FILE=.\src\cg_src\r_cg_sbrk.obj
+                                  00000420  0000081f       400
+  _heap_area
+                                  00000420       400   data ,l         2
+FILE=.\src\cg_src\r_cg_sci.obj
+                                  00000820  00000825         6
+  _g_sci5_tx_count
+                                  00000820         2   data ,g         2
+  _g_sci5_rx_count
+                                  00000822         2   data ,g         2
+  _g_sci5_rx_length
+                                  00000824         2   data ,g         2
+
+SECTION=B
+FILE=.\src\cg_src\r_cg_sci.obj
+                                  00000828  0000082f         8
+  _gp_sci5_tx_address
+                                  00000828         4   data ,g         2
+  _gp_sci5_rx_address
+                                  0000082c         4   data ,g         2
+
+SECTION=R
+FILE=.\src\cg_src\r_cg_sbrk.obj
+                                  00000830  00000833         4
+  _brk
+                                  00000830         4   data ,l         1
+
+SECTION=PResetPRG
+FILE=.\src\cg_src\r_cg_resetprg.obj
+                                  fff80000  fff8003d        3e
+  _PowerON_Reset_PC
+                                  fff80000        3e   entry,g         1
+
+SECTION=C
+FILE=.\src\cg_src\r_cg_dbsct.obj
+                                  fff80040  fff80073        34
+  __CTBL
+                                  fff80040        34   data ,g         0
+
+SECTION=C$DSEC
+FILE=.\src\cg_src\r_cg_dbsct.obj
+                                  fff80074  fff80097        24
+  __DTBL
+                                  fff80074        24   data ,g         0
+
+SECTION=C$BSEC
+FILE=.\src\cg_src\r_cg_dbsct.obj
+                                  fff80098  fff800af        18
+  __BTBL
+                                  fff80098        18   data ,g         0
+
+SECTION=C$VECT
+FILE=.\src\cg_src\r_cg_dbsct.obj
+                                  fff800b0  fff804af       400
+
+SECTION=D
+FILE=.\src\cg_src\r_cg_sbrk.obj
+                                  fff804b0  fff804b3         4
+
+SECTION=D_1
+FILE=.\src\cg_src\r_cg_rtc_user.obj
+                                  fff804b4  fff804c7        14
+
+SECTION=PIntPRG
+FILE=.\src\cg_src\r_cg_intprg.obj
+                                  fff804c8  fff804d5         e
+  _r_undefined_exception
+                                  fff804c8         2   func ,g         1
+  _r_privileged_exception
+                                  fff804ca         2   func ,g         1
+  _r_floatingpoint_exception
+                                  fff804cc         2   func ,g         1
+  _r_access_exception
+                                  fff804ce         2   func ,g         1
+  _r_reserved_exception
+                                  fff804d0         2   func ,g        13
+  _r_nmi_exception
+                                  fff804d2         2   func ,g         1
+  _r_brk_exception
+                                  fff804d4         2   func ,g         0
+
+SECTION=P
+FILE=.\src\cg_src\r_cg_cgc.obj
+                                  fff804d6  fff80584        af
+  _R_CGC_Create
+                                  fff804d6        af   func ,g         1
+FILE=.\src\cg_src\r_cg_hardware_setup.obj
+                                  fff80585  fff805b1        2d
+  _R_Systeminit
+                                  fff80585        2b   func ,g         1
+  _HardwareSetup
+                                  fff805b0         2   func ,g         1
+FILE=.\src\cg_src\r_cg_main.obj
+                                  fff805b2  fff805e3        32
+  _main
+                                  fff805b2        15   func ,g         1
+  _R_MAIN_UserInit
+                                  fff805c7        1d   func ,l         1
+FILE=.\src\cg_src\r_cg_rtc.obj
+                                  fff805e4  fff80799       1b6
+  _R_RTC_Create
+                                  fff805e4        8c   func ,g         2
+  _R_RTC_Start
+                                  fff80670        13   func ,g         1
+  _R_RTC_Stop
+                                  fff80683        13   func ,g         0
+  _R_RTC_Restart
+                                  fff80696        5a   func ,g         0
+  _R_RTC_Get_CalendarCounterValue
+                                  fff806f0        31   func ,g         1
+  _R_RTC_Set_CalendarCounterValue
+                                  fff80721        47   func ,g         0
+  _R_RTC_Set_ConstPeriodInterruptOn
+                                  fff80768        1f   func ,g         0
+  _R_RTC_Set_ConstPeriodInterruptOff
+                                  fff80787        13   func ,g         0
+FILE=.\src\cg_src\r_cg_rtc_user.obj
+                                  fff8079a  fff80842        a9
+  _r_rtc_prd_interrupt
+                                  fff8079a        a9   func ,l         0
+FILE=.\src\cg_src\r_cg_sbrk.obj
+                                  fff80843  fff80863        21
+  _sbrk
+                                  fff80843        21   func ,g         0
+FILE=.\src\cg_src\r_cg_sci.obj
+                                  fff80864  fff8096c       109
+  _R_SCI5_Create
+                                  fff80864        60   func ,g         2
+  _R_SCI5_Start
+                                  fff808c4        1b   func ,g         1
+  _R_SCI5_Stop
+                                  fff808df        34   func ,g         0
+  _R_SCI5_Serial_Receive
+                                  fff80913        2c   func ,g         0
+  _R_SCI5_Serial_Send
+                                  fff8093f        2e   func ,g         1
+FILE=.\src\cg_src\r_cg_sci_user.obj
+                                  fff8096d  fff80a27        bb
+  _r_sci5_transmit_interrupt
+                                  fff8096d        35   func ,l         0
+  _r_sci5_transmitend_interrupt
+                                  fff809a2        24   func ,l         0
+  _r_sci5_receive_interrupt
+                                  fff809c6        42   func ,l         0
+  _r_sci5_receiveerror_interrupt
+                                  fff80a08        1d   func ,l         0
+  _r_sci5_callback_transmitend
+                                  fff80a25         1   func ,l         1
+  _r_sci5_callback_receiveend
+                                  fff80a26         1   func ,l         1
+  _r_sci5_callback_receiveerror
+                                  fff80a27         1   func ,l         1
+FILE=__initsct
+                                  fff80a28  fff80a71        4a
+  __INITSCT
+                                  fff80a28         0   none ,g         1
+  loop1
+                                  fff80a3a         0   none ,l         1
+  next_loop1
+                                  fff80a48         0   none ,l         2
+  loop3
+                                  fff80a5a         0   none ,l         1
+  next_loop3
+                                  fff80a6b         0   none ,l         2
+
+SECTION=EXCEPTVECT
+FILE=.\src\cg_src\r_cg_vecttbl.obj
+                                  ffffff80  fffffffb        7c
+  _Excpt_Vectors
+                                  ffffff80        7c   data ,g         0
+
+SECTION=RESETVECT
+FILE=.\src\cg_src\r_cg_vecttbl.obj
+                                  fffffffc  ffffffff         4
+  _Reset_Vectors
+                                  fffffffc         4   data ,g         0
+
+*** Unfilled Areas ***
+
+AREA                                START    END
+
+*** Delete Symbols ***
+
+SYMBOL                                SIZE    INFO

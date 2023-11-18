@@ -1,0 +1,1941 @@
+   1                             	r8	=	0xffef0
+   2                             	r16	=	0xffee8
+   3                             	r24	=	0xffee0
+   4                             	r9	=	0xffef1
+   5                             	r17	=	0xffee9
+   6                             	r25	=	0xffee1
+   7                             	r10	=	0xffef2
+   8                             	r18	=	0xffeea
+   9                             	r26	=	0xffee2
+  10                             	r11	=	0xffef3
+  11                             	r19	=	0xffeeb
+  12                             	r27	=	0xffee3
+  13                             	r12	=	0xffef4
+  14                             	r20	=	0xffeec
+  15                             	r28	=	0xffee4
+  16                             	r13	=	0xffef5
+  17                             	r21	=	0xffeed
+  18                             	r29	=	0xffee5
+  19                             	r14	=	0xffef6
+  20                             	r22	=	0xffeee
+  21                             	r30	=	0xffee6
+  22                             	r15	=	0xffef7
+  23                             	r23	=	0xffeef
+  24                             	r31	=	0xffee7
+  25                             	.text
+  26                             	.Ltext0:
+  27                             		.global	_rx
+  28                             	.bss
+  31                             	_rx:
+  32 0000 00                      		.zero	1
+  33                             		.global	_s
+  36                             	_s:
+  37 0001 00 00 00 00 00 00 00 00 		.zero	500
+  37      00 00 00 00 00 00 00 00 
+  37      00 00 00 00 00 00 00 00 
+  37      00 00 00 00 00 00 00 00 
+  37      00 00 00 00 00 00 00 00 
+  38                             		.global	_now
+  39 01f5 00                      		.balign 2
+  42                             	_now:
+  43 01f6 00 00                   		.zero	2
+  44                             		.global	_old
+  45                             		.balign 2
+  48                             	_old:
+  49 01f8 00 00                   		.zero	2
+  50                             		.comm	_j,2,2
+  51                             		.comm	_l,2,2
+  52                             		.global	_count
+  53                             		.balign 2
+  56                             	_count:
+  57 01fa 00 00                   		.zero	2
+  58                             		.global	_n
+  59                             		.balign 2
+  62                             	_n:
+  63 01fc 00 00                   		.zero	2
+  64                             		.global	_history
+  65                             		.balign 2
+  68                             	_history:
+  69 01fe 00 00 00 00 00 00 00 00 		.zero	8
+  70                             		.global	_x
+  71                             		.balign 2
+  74                             	_x:
+  75 0206 00 00 00 00 00 00 00 00 		.zero	8
+  76                             		.global	_num
+  77                             		.balign 2
+  80                             	_num:
+  81 020e 00 00                   		.zero	2
+  82                             		.global	_k
+  83                             		.balign 2
+  86                             	_k:
+  87 0210 00 00                   		.zero	2
+  88                             		.comm	_no,2,2
+  89                             		.comm	_t,2,2
+  90                             		.global	_TIME
+  91                             	.data
+  94                             	_TIME:
+  95 0000 32 30 31 38 2D 30 34 2D 		.ascii	"2018-04-10%2022:30:10"
+  95      31 30 25 32 30 32 32 3A 
+  95      33 30 3A 31 30 
+  96                             		.global	_OK
+  97                             		.section	.rodata
+ 100                             	_OK:
+ 101 0000 4F 4B                   		.ascii	"OK"
+ 102                             		.global	_time
+ 105                             	_time:
+ 106 0002 74 69 6D 65 3D          		.ascii	"time="
+ 107                             		.global	_ERROR
+ 110                             	_ERROR:
+ 111 0007 45 52 52 4F 52          		.ascii	"ERROR"
+ 112                             		.global	_CLOSED
+ 115                             	_CLOSED:
+ 116 000c 43 4C 4F 53 45 44       		.ascii	"CLOSED"
+ 117                             		.global	_FAIL
+ 120                             	_FAIL:
+ 121 0012 46 41 49 4C             		.ascii	"FAIL"
+ 122                             		.global	_flag
+ 123                             	.data
+ 124 0015 00                      		.balign 2
+ 127                             	_flag:
+ 128 0016 01 00                   		.short	1
+ 129                             		.global	_ok_flag
+ 130                             	.bss
+ 131                             		.balign 2
+ 134                             	_ok_flag:
+ 135 0212 00 00                   		.zero	2
+ 136                             		.global	_count_flag
+ 137                             		.balign 2
+ 140                             	_count_flag:
+ 141 0214 00 00                   		.zero	2
+ 142                             		.global	_stack_flag
+ 143                             		.balign 2
+ 146                             	_stack_flag:
+ 147 0216 00 00                   		.zero	2
+ 148                             		.global	_CIPSTART
+ 149                             		.section	.rodata
+ 152                             	_CIPSTART:
+ 153 0016 41 54 2B 43 49 50 53 54 		.ascii	"AT+CIPSTART=\"TCP\",\"140.125.49.210\",80\r\n"
+ 153      41 52 54 3D 22 54 43 50 
+ 153      22 2C 22 31 34 30 2E 31 
+ 153      32 35 2E 34 39 2E 32 31 
+ 153      30 22 2C 38 30 0D 0A 
+ 154                             		.global	_GET
+ 155                             	.data
+ 158                             	_GET:
+ 159 0018 47 65 74 20 2F 62 65 61 		.string	"Get /bear/time.php?count=000&state=0010,2018-04-11%2010:40:39\r\n"
+ 159      72 2F 74 69 6D 65 2E 70 
+ 159      68 70 3F 63 6F 75 6E 74 
+ 159      3D 30 30 30 26 73 74 61 
+ 159      74 65 3D 30 30 31 30 2C 
+ 160 0058 00 00 00 00 00 00 00 00 		.zero	436
+ 160      00 00 00 00 00 00 00 00 
+ 160      00 00 00 00 00 00 00 00 
+ 160      00 00 00 00 00 00 00 00 
+ 160      00 00 00 00 00 00 00 00 
+ 161                             		.global	_CIPSEND
+ 164                             	_CIPSEND:
+ 165 020c 41 54 2B 43 49 50 53 45 		.ascii	"AT+CIPSEND=063\r\n"
+ 165      4E 44 3D 30 36 33 0D 0A 
+ 166                             		.global	___divhi3
+ 167                             		.global	___modhi3
+ 168                             	.text
+ 169                             		.global	_main
+ 171                             	_main:
+ 172                             	.LFB0:
+ 173                             		.file 1 "../src/r_main.c"
+   1:../src/r_main.c **** /**************************************************************************************************
+   2:../src/r_main.c **** * DISCLAIMER
+   3:../src/r_main.c **** * This software is supplied by Renesas Electronics Corporation and is only intended for use with Re
+   4:../src/r_main.c **** * No other uses are authorized. This software is owned by Renesas Electronics Corporation and is pr
+   5:../src/r_main.c **** * applicable laws, including copyright laws. 
+   6:../src/r_main.c **** * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIESREGARDING THIS SOFTWARE, WHETHER
+   7:../src/r_main.c **** * OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULA
+   8:../src/r_main.c **** * NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.TO THE MAXIMUM EXTENT PERMITTED N
+   9:../src/r_main.c **** * LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+  10:../src/r_main.c **** * INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS SOFTWARE, E
+  11:../src/r_main.c **** * ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+  12:../src/r_main.c **** * Renesas reserves the right, without notice, to make changes to this software and to discontinue t
+  13:../src/r_main.c **** * of this software. By using this software, you agree to the additional terms and conditions found 
+  14:../src/r_main.c **** * following link:
+  15:../src/r_main.c **** * http://www.renesas.com/disclaimer
+  16:../src/r_main.c **** *
+  17:../src/r_main.c **** * Copyright (C) 2011, 2016 Renesas Electronics Corporation. All rights reserved.
+  18:../src/r_main.c **** ***************************************************************************************************
+  19:../src/r_main.c **** 
+  20:../src/r_main.c **** /**************************************************************************************************
+  21:../src/r_main.c **** * File Name    : r_main.c
+  22:../src/r_main.c **** * Version      : CodeGenerator for RL78/G12 V2.03.04.01 [11 Nov 2016]
+  23:../src/r_main.c **** * Device(s)    : R5F1026A
+  24:../src/r_main.c **** * Tool-Chain   : GCCRL78
+  25:../src/r_main.c **** * Description  : This file implements main function.
+  26:../src/r_main.c **** * Creation Date: 2018/4/10
+  27:../src/r_main.c **** ***************************************************************************************************
+  28:../src/r_main.c **** 
+  29:../src/r_main.c **** /**************************************************************************************************
+  30:../src/r_main.c **** Includes
+  31:../src/r_main.c **** ***************************************************************************************************
+  32:../src/r_main.c **** #include "r_cg_macrodriver.h"
+  33:../src/r_main.c **** #include "r_cg_cgc.h"
+  34:../src/r_main.c **** #include "r_cg_port.h"
+  35:../src/r_main.c **** #include "r_cg_serial.h"
+  36:../src/r_main.c **** #include "r_cg_timer.h"
+  37:../src/r_main.c **** /* Start user code for include. Do not edit comment generated here */
+  38:../src/r_main.c **** /* End user code. Do not edit comment generated here */
+  39:../src/r_main.c **** #include "r_cg_userdefine.h"
+  40:../src/r_main.c **** 
+  41:../src/r_main.c **** /**************************************************************************************************
+  42:../src/r_main.c **** Global variables and functions
+  43:../src/r_main.c **** ***************************************************************************************************
+  44:../src/r_main.c **** /* Start user code for global. Do not edit comment generated here */
+  45:../src/r_main.c **** 
+  46:../src/r_main.c **** extern int tx_flag,i,sec;
+  47:../src/r_main.c **** extern char command[100];
+  48:../src/r_main.c **** 
+  49:../src/r_main.c **** char rx[1]={0},s[500]={0};
+  50:../src/r_main.c **** int now=0,old=0,j,l,count=0,n=0,history[4]={0},x[4]={0},num=0,k=0,no,t;
+  51:../src/r_main.c **** char TIME[21]="2018-04-10%2022:30:10";
+  52:../src/r_main.c **** 
+  53:../src/r_main.c **** const char OK[2]="OK";
+  54:../src/r_main.c **** const char time[5]="time=";
+  55:../src/r_main.c **** const char ERROR[5]="ERROR";
+  56:../src/r_main.c **** const char CLOSED[6]="CLOSED";
+  57:../src/r_main.c **** const char FAIL[4]="FAIL";
+  58:../src/r_main.c **** // flags
+  59:../src/r_main.c **** int flag=1,ok_flag=0,count_flag=0,stack_flag=0;
+  60:../src/r_main.c **** 
+  61:../src/r_main.c **** //commands
+  62:../src/r_main.c **** const char CIPSTART[39]="AT+CIPSTART=\"TCP\",\"140.125.49.210\",80\r\n";
+  63:../src/r_main.c **** char GET[500]="Get /bear/time.php?count=000&state=0010,2018-04-11%2010:40:39\r\n";
+  64:../src/r_main.c **** char CIPSEND[16]="AT+CIPSEND=063\r\n";
+  65:../src/r_main.c **** 
+  66:../src/r_main.c **** /* End user code. Do not edit comment generated here */
+  67:../src/r_main.c **** void R_MAIN_UserInit(void);
+  68:../src/r_main.c **** 
+  69:../src/r_main.c **** /**************************************************************************************************
+  70:../src/r_main.c **** * Function Name: main
+  71:../src/r_main.c **** * Description  : This function implements main function.
+  72:../src/r_main.c **** * Arguments    : None
+  73:../src/r_main.c **** * Return Value : None
+  74:../src/r_main.c **** ***************************************************************************************************
+  75:../src/r_main.c **** void main(void)
+  76:../src/r_main.c **** {
+ 174                             		.loc 1 76 0
+ 175                             		; start of function
+ 176                             		; push 2: r16
+ 177                             		; outgoing: 4 bytes
+ 178 0000 61 EF                   		sel	rb2
+ 179 0002 C1                      		push	ax ; r16
+ 180                             	.LCFI0:
+ 181 0003 61 CF                   		sel	rb0
+ 182 0005 20 04                   		subw	sp, #4
+ 183                             	.LCFI1:
+  77:../src/r_main.c ****     R_MAIN_UserInit();
+ 184                             		.loc 1 77 0
+ 185 0007 FC 00 00 00             		call	!!%code(_R_MAIN_UserInit)
+  78:../src/r_main.c ****     /* Start user code. Do not edit comment generated here */
+  79:../src/r_main.c ****     R_UART0_Create();
+ 186                             		.loc 1 79 0
+ 187 000b FC 00 00 00             		call	!!%code(_R_UART0_Create)
+  80:../src/r_main.c ****     R_UART0_Start();
+ 188                             		.loc 1 80 0
+ 189 000f FC 00 00 00             		call	!!%code(_R_UART0_Start)
+  81:../src/r_main.c ****     R_PORT_Create();
+ 190                             		.loc 1 81 0
+ 191 0013 FC 00 00 00             		call	!!%code(_R_PORT_Create)
+  82:../src/r_main.c ****     R_TAU0_Create();
+ 192                             		.loc 1 82 0
+ 193 0017 FC 00 00 00             		call	!!%code(_R_TAU0_Create)
+  83:../src/r_main.c ****     R_TAU0_Channel0_Start();
+ 194                             		.loc 1 83 0
+ 195 001b FC 00 00 00             		call	!!%code(_R_TAU0_Channel0_Start)
+  84:../src/r_main.c **** 
+  85:../src/r_main.c ****     R_UART0_Receive(rx,1);
+ 196                             		.loc 1 85 0
+ 197 001f 30 00 00                		movw	ax, #_rx
+ 198 0022 B8 00                   		movw	[sp], ax
+ 199 0024 E6                      		onew	ax
+ 200 0025 B8 02                   		movw	[sp+2], ax
+ 201 0027 FC 00 00 00             		call	!!%code(_R_UART0_Receive)
+ 202                             	.L39:
+ 203                             	.LBB2:
+  86:../src/r_main.c ****     while (1U)
+  87:../src/r_main.c ****     {
+  88:../src/r_main.c ****     	no=0;
+ 204                             		.loc 1 88 0
+ 205 002b F6                      		clrw	ax
+ 206 002c BF 00 00                		movw	!_no, ax
+  89:../src/r_main.c ****     	// 以下為按鈕(訊號)判斷
+  90:../src/r_main.c ****     	if( P2_bit.no0==0 ) { x[0]=1; n++;}
+ 207                             		.loc 1 90 0
+ 208 002f C9 F0 02 FF             		movw	r8, #-254
+ 209 0033 AD F0                   		movw	ax, r8
+ 210 0035 BD F2                   		movw	r10, ax
+ 211 0037 EA F2                   		movw	de, r10
+ 212 0039 89                      		mov	a, [de]
+ 213 003a 5C 01                   		and	a, #1
+ 214 003c 9D F0                   		mov	r8, a
+ 215 003e D4 F0                   		cmp0	r8
+ 216 0040 61 E8                   		 skz
+ 217 0042 EC 5A 00 00             		 br	!!.L2
+ 218                             		.loc 1 90 0 is_stmt 0 discriminator 1
+ 219 0046 E6                      		onew	ax
+ 220 0047 BF 00 00                		movw	!_x, ax
+ 221 004a AF 00 00                		movw	ax, !_n
+ 222 004d BD F0                   		movw	r8, ax
+ 223 004f A6 F0                   		incw	r8
+ 224 0051 AD F0                   		movw	ax, r8
+ 225 0053 BF 00 00                		movw	!_n, ax
+ 226 0056 EC 5E 00 00             		br	!!.L3
+ 227                             	.L2:
+  91:../src/r_main.c **** 		else x[0]=0;
+ 228                             		.loc 1 91 0 is_stmt 1
+ 229 005a F6                      		clrw	ax
+ 230 005b BF 00 00                		movw	!_x, ax
+ 231                             	.L3:
+  92:../src/r_main.c **** 		if( P2_bit.no1==0 ) { x[1]=1; n++;}
+ 232                             		.loc 1 92 0
+ 233 005e C9 F0 02 FF             		movw	r8, #-254
+ 234 0062 AD F0                   		movw	ax, r8
+ 235 0064 BD F4                   		movw	r12, ax
+ 236 0066 FA F4                   		movw	hl, r12
+ 237 0068 8B                      		mov	a, [hl]
+ 238 0069 9D F0                   		mov	r8, a
+ 239 006b 31 1A                   		shr	a, 1
+ 240 006d 9D F0                   		mov	r8, a
+ 241 006f 5A F0 01                		and	r8, #1
+ 242 0072 61 E8                   		skz
+ 243 0074 EC 8C 00 00             		 br	!!.L4
+ 244                             		 # zero-comparison eliminated
+ 245                             		.loc 1 92 0 is_stmt 0 discriminator 1
+ 246 0078 E6                      		onew	ax
+ 247 0079 BF 00 00                		movw	!_x+2, ax
+ 248 007c AF 00 00                		movw	ax, !_n
+ 249 007f BD F0                   		movw	r8, ax
+ 250 0081 A6 F0                   		incw	r8
+ 251 0083 AD F0                   		movw	ax, r8
+ 252 0085 BF 00 00                		movw	!_n, ax
+ 253 0088 EC 90 00 00             		br	!!.L5
+ 254                             	.L4:
+  93:../src/r_main.c **** 		else x[1]=0;
+ 255                             		.loc 1 93 0 is_stmt 1
+ 256 008c F6                      		clrw	ax
+ 257 008d BF 00 00                		movw	!_x+2, ax
+ 258                             	.L5:
+  94:../src/r_main.c **** 		if( P2_bit.no2==0 ) { x[2]=1; n++;}
+ 259                             		.loc 1 94 0
+ 260 0090 C9 F0 02 FF             		movw	r8, #-254
+ 261 0094 AD F0                   		movw	ax, r8
+ 262 0096 BD F2                   		movw	r10, ax
+ 263 0098 FA F2                   		movw	hl, r10
+ 264 009a 8B                      		mov	a, [hl]
+ 265 009b 9D F0                   		mov	r8, a
+ 266 009d 31 2A                   		shr	a, 2
+ 267 009f 9D F0                   		mov	r8, a
+ 268 00a1 5A F0 01                		and	r8, #1
+ 269 00a4 61 E8                   		skz
+ 270 00a6 EC BE 00 00             		 br	!!.L6
+ 271                             		 # zero-comparison eliminated
+ 272                             		.loc 1 94 0 is_stmt 0 discriminator 1
+ 273 00aa E6                      		onew	ax
+ 274 00ab BF 00 00                		movw	!_x+4, ax
+ 275 00ae AF 00 00                		movw	ax, !_n
+ 276 00b1 BD F0                   		movw	r8, ax
+ 277 00b3 A6 F0                   		incw	r8
+ 278 00b5 AD F0                   		movw	ax, r8
+ 279 00b7 BF 00 00                		movw	!_n, ax
+ 280 00ba EC C2 00 00             		br	!!.L7
+ 281                             	.L6:
+  95:../src/r_main.c **** 		else x[2]=0;
+ 282                             		.loc 1 95 0 is_stmt 1
+ 283 00be F6                      		clrw	ax
+ 284 00bf BF 00 00                		movw	!_x+4, ax
+ 285                             	.L7:
+  96:../src/r_main.c **** 		if( P2_bit.no3==0 ) { x[3]=1; n++;}
+ 286                             		.loc 1 96 0
+ 287 00c2 C9 F0 02 FF             		movw	r8, #-254
+ 288 00c6 AD F0                   		movw	ax, r8
+ 289 00c8 BD F4                   		movw	r12, ax
+ 290 00ca FA F4                   		movw	hl, r12
+ 291 00cc 8B                      		mov	a, [hl]
+ 292 00cd 9D F0                   		mov	r8, a
+ 293 00cf 31 3A                   		shr	a, 3
+ 294 00d1 9D F0                   		mov	r8, a
+ 295 00d3 5A F0 01                		and	r8, #1
+ 296 00d6 61 E8                   		skz
+ 297 00d8 EC F0 00 00             		 br	!!.L8
+ 298                             		 # zero-comparison eliminated
+ 299                             		.loc 1 96 0 is_stmt 0 discriminator 1
+ 300 00dc E6                      		onew	ax
+ 301 00dd BF 00 00                		movw	!_x+6, ax
+ 302 00e0 AF 00 00                		movw	ax, !_n
+ 303 00e3 BD F0                   		movw	r8, ax
+ 304 00e5 A6 F0                   		incw	r8
+ 305 00e7 AD F0                   		movw	ax, r8
+ 306 00e9 BF 00 00                		movw	!_n, ax
+ 307 00ec EC F4 00 00             		br	!!.L9
+ 308                             	.L8:
+  97:../src/r_main.c **** 		else x[3]=0;
+ 309                             		.loc 1 97 0 is_stmt 1
+ 310 00f0 F6                      		clrw	ax
+ 311 00f1 BF 00 00                		movw	!_x+6, ax
+ 312                             	.L9:
+  98:../src/r_main.c **** 
+  99:../src/r_main.c **** 		if( P6_bit.no0==0 ) no++;
+ 313                             		.loc 1 99 0
+ 314 00f4 C9 F0 06 FF             		movw	r8, #-250
+ 315 00f8 AD F0                   		movw	ax, r8
+ 316 00fa BD F2                   		movw	r10, ax
+ 317 00fc EA F2                   		movw	de, r10
+ 318 00fe 89                      		mov	a, [de]
+ 319 00ff 5C 01                   		and	a, #1
+ 320 0101 9D F0                   		mov	r8, a
+ 321 0103 D4 F0                   		cmp0	r8
+ 322 0105 61 E8                   		 skz
+ 323 0107 EC 17 01 00             		 br	!!.L10
+ 324                             		.loc 1 99 0 is_stmt 0 discriminator 1
+ 325 010b AF 00 00                		movw	ax, !_no
+ 326 010e BD F0                   		movw	r8, ax
+ 327 0110 A6 F0                   		incw	r8
+ 328 0112 AD F0                   		movw	ax, r8
+ 329 0114 BF 00 00                		movw	!_no, ax
+ 330                             	.L10:
+ 100:../src/r_main.c **** 		if( P6_bit.no1==0 ) no+=2;
+ 331                             		.loc 1 100 0 is_stmt 1
+ 332 0117 C9 F0 06 FF             		movw	r8, #-250
+ 333 011b AD F0                   		movw	ax, r8
+ 334 011d BD F4                   		movw	r12, ax
+ 335 011f FA F4                   		movw	hl, r12
+ 336 0121 8B                      		mov	a, [hl]
+ 337 0122 9D F0                   		mov	r8, a
+ 338 0124 31 1A                   		shr	a, 1
+ 339 0126 9D F0                   		mov	r8, a
+ 340 0128 5A F0 01                		and	r8, #1
+ 341 012b 61 E8                   		skz
+ 342 012d EC 3F 01 00             		 br	!!.L11
+ 343                             		 # zero-comparison eliminated
+ 344                             		.loc 1 100 0 is_stmt 0 discriminator 1
+ 345 0131 AF 00 00                		movw	ax, !_no
+ 346 0134 BD F0                   		movw	r8, ax
+ 347 0136 A6 F0                   		incw	r8 
+ 348 0138 A6 F0                   		incw	r8
+ 349 013a AD F0                   		movw	ax, r8
+ 350 013c BF 00 00                		movw	!_no, ax
+ 351                             	.L11:
+ 101:../src/r_main.c **** 		if( P4_bit.no1==0 ) no+=4;
+ 352                             		.loc 1 101 0 is_stmt 1
+ 353 013f C9 F0 04 FF             		movw	r8, #-252
+ 354 0143 AD F0                   		movw	ax, r8
+ 355 0145 BD F2                   		movw	r10, ax
+ 356 0147 FA F2                   		movw	hl, r10
+ 357 0149 8B                      		mov	a, [hl]
+ 358 014a 9D F0                   		mov	r8, a
+ 359 014c 31 1A                   		shr	a, 1
+ 360 014e 9D F0                   		mov	r8, a
+ 361 0150 5A F0 01                		and	r8, #1
+ 362 0153 61 E8                   		skz
+ 363 0155 EC 66 01 00             		 br	!!.L12
+ 364                             		 # zero-comparison eliminated
+ 365                             		.loc 1 101 0 is_stmt 0 discriminator 1
+ 366 0159 AF 00 00                		movw	ax, !_no
+ 367 015c BD F0                   		movw	r8, ax
+ 368 015e 04 04 00                		addw	ax, #4
+ 369 0161 BD F0                   		movw	r8, ax
+ 370 0163 BF 00 00                		movw	!_no, ax
+ 371                             	.L12:
+ 102:../src/r_main.c **** 		if( P4_bit.no2==0 ) no+=8;
+ 372                             		.loc 1 102 0 is_stmt 1
+ 373 0166 C9 F0 04 FF             		movw	r8, #-252
+ 374 016a AD F0                   		movw	ax, r8
+ 375 016c BD F4                   		movw	r12, ax
+ 376 016e FA F4                   		movw	hl, r12
+ 377 0170 8B                      		mov	a, [hl]
+ 378 0171 9D F0                   		mov	r8, a
+ 379 0173 31 2A                   		shr	a, 2
+ 380 0175 9D F0                   		mov	r8, a
+ 381 0177 5A F0 01                		and	r8, #1
+ 382 017a 61 E8                   		skz
+ 383 017c EC 8D 01 00             		 br	!!.L13
+ 384                             		 # zero-comparison eliminated
+ 385                             		.loc 1 102 0 is_stmt 0 discriminator 1
+ 386 0180 AF 00 00                		movw	ax, !_no
+ 387 0183 BD F0                   		movw	r8, ax
+ 388 0185 04 08 00                		addw	ax, #8
+ 389 0188 BD F0                   		movw	r8, ax
+ 390 018a BF 00 00                		movw	!_no, ax
+ 391                             	.L13:
+ 103:../src/r_main.c **** 		if( P12_bit.no1==0 ) no+=16;
+ 392                             		.loc 1 103 0 is_stmt 1
+ 393 018d C9 F0 0C FF             		movw	r8, #-244
+ 394 0191 AD F0                   		movw	ax, r8
+ 395 0193 BD F2                   		movw	r10, ax
+ 396 0195 FA F2                   		movw	hl, r10
+ 397 0197 8B                      		mov	a, [hl]
+ 398 0198 9D F0                   		mov	r8, a
+ 399 019a 31 1A                   		shr	a, 1
+ 400 019c 9D F0                   		mov	r8, a
+ 401 019e 5A F0 01                		and	r8, #1
+ 402 01a1 61 E8                   		skz
+ 403 01a3 EC B4 01 00             		 br	!!.L14
+ 404                             		 # zero-comparison eliminated
+ 405                             		.loc 1 103 0 is_stmt 0 discriminator 1
+ 406 01a7 AF 00 00                		movw	ax, !_no
+ 407 01aa BD F0                   		movw	r8, ax
+ 408 01ac 04 10 00                		addw	ax, #16
+ 409 01af BD F0                   		movw	r8, ax
+ 410 01b1 BF 00 00                		movw	!_no, ax
+ 411                             	.L14:
+ 104:../src/r_main.c **** 		if( P12_bit.no2==0 ) no+=32;
+ 412                             		.loc 1 104 0 is_stmt 1
+ 413 01b4 C9 F0 0C FF             		movw	r8, #-244
+ 414 01b8 AD F0                   		movw	ax, r8
+ 415 01ba BD F4                   		movw	r12, ax
+ 416 01bc FA F4                   		movw	hl, r12
+ 417 01be 8B                      		mov	a, [hl]
+ 418 01bf 9D F0                   		mov	r8, a
+ 419 01c1 31 2A                   		shr	a, 2
+ 420 01c3 9D F0                   		mov	r8, a
+ 421 01c5 5A F0 01                		and	r8, #1
+ 422 01c8 61 E8                   		skz
+ 423 01ca EC DB 01 00             		 br	!!.L15
+ 424                             		 # zero-comparison eliminated
+ 425                             		.loc 1 104 0 is_stmt 0 discriminator 1
+ 426 01ce AF 00 00                		movw	ax, !_no
+ 427 01d1 BD F0                   		movw	r8, ax
+ 428 01d3 04 20 00                		addw	ax, #32
+ 429 01d6 BD F0                   		movw	r8, ax
+ 430 01d8 BF 00 00                		movw	!_no, ax
+ 431                             	.L15:
+ 105:../src/r_main.c **** 		if( P13_bit.no7==0 ) no+=64;
+ 432                             		.loc 1 105 0 is_stmt 1
+ 433 01db C9 F0 0D FF             		movw	r8, #-243
+ 434 01df AD F0                   		movw	ax, r8
+ 435 01e1 BD F2                   		movw	r10, ax
+ 436 01e3 FA F2                   		movw	hl, r10
+ 437 01e5 8B                      		mov	a, [hl]
+ 438 01e6 9D F0                   		mov	r8, a
+ 439 01e8 31 7A                   		shr	a, 7
+ 440 01ea 9D F0                   		mov	r8, a
+ 441 01ec D4 F0                   		cmp0	r8
+ 442 01ee 61 E8                   		 skz
+ 443 01f0 EC 01 02 00             		 br	!!.L16
+ 444                             		.loc 1 105 0 is_stmt 0 discriminator 1
+ 445 01f4 AF 00 00                		movw	ax, !_no
+ 446 01f7 BD F0                   		movw	r8, ax
+ 447 01f9 04 40 00                		addw	ax, #64
+ 448 01fc BD F0                   		movw	r8, ax
+ 449 01fe BF 00 00                		movw	!_no, ax
+ 450                             	.L16:
+ 106:../src/r_main.c **** 
+ 107:../src/r_main.c **** 		GET[35]= (no/100+'0');
+ 451                             		.loc 1 107 0 is_stmt 1
+ 452 0201 AF 00 00                		movw	ax, !_no
+ 453 0204 BD F0                   		movw	r8, ax
+ 454 0206 B8 00                   		movw	[sp], ax
+ 455 0208 30 64 00                		movw	ax, #100
+ 456 020b B8 02                   		movw	[sp+2], ax
+ 457 020d FC 00 00 00             		call	!!___divhi3
+ 458 0211 8D F0                   		mov	a, r8
+ 459 0213 0C 30                   		add	a, #48
+ 460 0215 9D F0                   		mov	r8, a
+ 461 0217 9F 00 00                		mov	!_GET+35, a
+ 108:../src/r_main.c **** 		GET[36]= ((no/10)%10+'0');
+ 462                             		.loc 1 108 0
+ 463 021a AF 00 00                		movw	ax, !_no
+ 464 021d BD F0                   		movw	r8, ax
+ 465 021f B8 00                   		movw	[sp], ax
+ 466 0221 30 0A 00                		movw	ax, #10
+ 467 0224 B8 02                   		movw	[sp+2], ax
+ 468 0226 FC 00 00 00             		call	!!___divhi3
+ 469 022a AD F0                   		movw	ax, r8
+ 470 022c B8 00                   		movw	[sp], ax
+ 471 022e 30 0A 00                		movw	ax, #10
+ 472 0231 B8 02                   		movw	[sp+2], ax
+ 473 0233 FC 00 00 00             		call	!!___modhi3
+ 474 0237 8D F0                   		mov	a, r8
+ 475 0239 0C 30                   		add	a, #48
+ 476 023b 9D F0                   		mov	r8, a
+ 477 023d 9F 00 00                		mov	!_GET+36, a
+ 109:../src/r_main.c **** 		GET[37]= (no%10+'0');
+ 478                             		.loc 1 109 0
+ 479 0240 AF 00 00                		movw	ax, !_no
+ 480 0243 BD F0                   		movw	r8, ax
+ 481 0245 B8 00                   		movw	[sp], ax
+ 482 0247 30 0A 00                		movw	ax, #10
+ 483 024a B8 02                   		movw	[sp+2], ax
+ 484 024c FC 00 00 00             		call	!!___modhi3
+ 485 0250 8D F0                   		mov	a, r8
+ 486 0252 0C 30                   		add	a, #48
+ 487 0254 9D F0                   		mov	r8, a
+ 488 0256 9F 00 00                		mov	!_GET+37, a
+ 110:../src/r_main.c **** 
+ 111:../src/r_main.c **** 		if( P2_bit.no0 && P2_bit.no1 && P2_bit.no2 && P2_bit.no3 ) now=0;
+ 489                             		.loc 1 111 0
+ 490 0259 C9 F0 02 FF             		movw	r8, #-254
+ 491 025d AD F0                   		movw	ax, r8
+ 492 025f BD F4                   		movw	r12, ax
+ 493 0261 EA F4                   		movw	de, r12
+ 494 0263 89                      		mov	a, [de]
+ 495 0264 5C 01                   		and	a, #1
+ 496 0266 9D F0                   		mov	r8, a
+ 497 0268 D4 F0                   		cmp0	r8
+ 498 026a 61 F8                   		 sknz
+ 499 026c EC C2 02 00             		 br	!!.L17
+ 500                             		.loc 1 111 0 is_stmt 0 discriminator 1
+ 501 0270 C9 F0 02 FF             		movw	r8, #-254
+ 502 0274 AD F0                   		movw	ax, r8
+ 503 0276 BD F2                   		movw	r10, ax
+ 504 0278 FA F2                   		movw	hl, r10
+ 505 027a 8B                      		mov	a, [hl]
+ 506 027b 9D F0                   		mov	r8, a
+ 507 027d 31 1A                   		shr	a, 1
+ 508 027f 9D F0                   		mov	r8, a
+ 509 0281 5A F0 01                		and	r8, #1
+ 510 0284 61 F8                   		sknz
+ 511 0286 EC C2 02 00             		 br	!!.L17
+ 512                             		 # zero-comparison eliminated
+ 513                             		.loc 1 111 0 discriminator 2
+ 514 028a C9 F0 02 FF             		movw	r8, #-254
+ 515 028e AD F0                   		movw	ax, r8
+ 516 0290 BD F4                   		movw	r12, ax
+ 517 0292 FA F4                   		movw	hl, r12
+ 518 0294 8B                      		mov	a, [hl]
+ 519 0295 9D F0                   		mov	r8, a
+ 520 0297 31 2A                   		shr	a, 2
+ 521 0299 9D F0                   		mov	r8, a
+ 522 029b 5A F0 01                		and	r8, #1
+ 523 029e 61 F8                   		sknz
+ 524 02a0 EC C2 02 00             		 br	!!.L17
+ 525                             		 # zero-comparison eliminated
+ 526                             		.loc 1 111 0 discriminator 3
+ 527 02a4 C9 F0 02 FF             		movw	r8, #-254
+ 528 02a8 AD F0                   		movw	ax, r8
+ 529 02aa BD F2                   		movw	r10, ax
+ 530 02ac FA F2                   		movw	hl, r10
+ 531 02ae 8B                      		mov	a, [hl]
+ 532 02af 9D F0                   		mov	r8, a
+ 533 02b1 31 3A                   		shr	a, 3
+ 534 02b3 9D F0                   		mov	r8, a
+ 535 02b5 5A F0 01                		and	r8, #1
+ 536 02b8 61 F8                   		sknz
+ 537 02ba EC C2 02 00             		 br	!!.L17
+ 538                             		 # zero-comparison eliminated
+ 539                             		.loc 1 111 0 discriminator 4
+ 540 02be F6                      		clrw	ax
+ 541 02bf BF 00 00                		movw	!_now, ax
+ 542                             	.L17:
+ 112:../src/r_main.c **** 
+ 113:../src/r_main.c **** 		for(j=0;j<=3;j++)
+ 543                             		.loc 1 113 0 is_stmt 1
+ 544 02c2 F6                      		clrw	ax
+ 545 02c3 BF 00 00                		movw	!_j, ax
+ 546 02c6 EC 38 03 00             		br	!!.L18
+ 547                             	.L20:
+ 114:../src/r_main.c **** 			if(history[j]!=x[j])
+ 548                             		.loc 1 114 0
+ 549 02ca AF 00 00                		movw	ax, !_j
+ 550 02cd BD F0                   		movw	r8, ax
+ 551 02cf 01                      		addw	ax, ax
+ 552 02d0 BD F0                   		movw	r8, ax
+ 553 02d2 04 00 00                		addw	ax, #_history
+ 554 02d5 BD F0                   		movw	r8, ax
+ 555 02d7 BD F4                   		movw	r12, ax
+ 556 02d9 FA F4                   		movw	hl, r12
+ 557 02db AB                      		movw	ax, [hl]
+ 558 02dc BD F2                   		movw	r10, ax
+ 559 02de AF 00 00                		movw	ax, !_j
+ 560 02e1 BD F0                   		movw	r8, ax
+ 561 02e3 01                      		addw	ax, ax
+ 562 02e4 BD F0                   		movw	r8, ax
+ 563 02e6 04 00 00                		addw	ax, #_x
+ 564 02e9 BD F0                   		movw	r8, ax
+ 565 02eb BD F4                   		movw	r12, ax
+ 566 02ed FA F4                   		movw	hl, r12
+ 567 02ef AB                      		movw	ax, [hl]
+ 568 02f0 BD F0                   		movw	r8, ax
+ 569 02f2 AD F2                   		movw	ax, r10
+ 570 02f4 46 F0                   		cmpw	ax, r8
+ 571 02f6 61 F8                   		 sknz
+ 572 02f8 EC 2C 03 00             		 br	!!.L19
+ 115:../src/r_main.c **** 				{ n=0; history[j]=x[j]; }
+ 573                             		.loc 1 115 0
+ 574 02fc F6                      		clrw	ax
+ 575 02fd BF 00 00                		movw	!_n, ax
+ 576 0300 AF 00 00                		movw	ax, !_j
+ 577 0303 BD F0                   		movw	r8, ax
+ 578 0305 AF 00 00                		movw	ax, !_j
+ 579 0308 BD F2                   		movw	r10, ax
+ 580 030a 01                      		addw	ax, ax
+ 581 030b BD F2                   		movw	r10, ax
+ 582 030d 04 00 00                		addw	ax, #_x
+ 583 0310 BD F2                   		movw	r10, ax
+ 584 0312 BD F4                   		movw	r12, ax
+ 585 0314 FA F4                   		movw	hl, r12
+ 586 0316 AB                      		movw	ax, [hl]
+ 587 0317 BD F2                   		movw	r10, ax
+ 588 0319 AD F0                   		movw	ax, r8
+ 589 031b 01                      		addw	ax, ax
+ 590 031c BD F0                   		movw	r8, ax
+ 591 031e 04 00 00                		addw	ax, #_history
+ 592 0321 BD F0                   		movw	r8, ax
+ 593 0323 BD F4                   		movw	r12, ax
+ 594 0325 DA F4                   		movw	bc, r12
+ 595 0327 AD F2                   		movw	ax, r10
+ 596 0329 78 00 00                		movw	[bc], ax
+ 597                             	.L19:
+ 113:../src/r_main.c **** 			if(history[j]!=x[j])
+ 598                             		.loc 1 113 0 discriminator 2
+ 599 032c AF 00 00                		movw	ax, !_j
+ 600 032f BD F0                   		movw	r8, ax
+ 601 0331 A6 F0                   		incw	r8
+ 602 0333 AD F0                   		movw	ax, r8
+ 603 0335 BF 00 00                		movw	!_j, ax
+ 604                             	.L18:
+ 113:../src/r_main.c **** 			if(history[j]!=x[j])
+ 605                             		.loc 1 113 0 is_stmt 0 discriminator 1
+ 606 0338 AF 00 00                		movw	ax, !_j
+ 607 033b BD F0                   		movw	r8, ax
+ 608 033d 44 03 00                		cmpw	ax, #3
+ 609 0340 71 FF                   		 xor1	CY, a.7
+ 610 0342 61 E3                   		 skh
+ 611 0344 EC CA 02 00             		 br	!!.L20
+ 116:../src/r_main.c **** 
+ 117:../src/r_main.c **** 		if(n>=300 && n<2000)
+ 612                             		.loc 1 117 0 is_stmt 1
+ 613 0348 AF 00 00                		movw	ax, !_n
+ 614 034b BD F0                   		movw	r8, ax
+ 615 034d 44 2B 01                		cmpw	ax, #299
+ 616 0350 71 FF                   		 xor1	CY, a.7
+ 617 0352 61 E3                   		 skh
+ 618 0354 EC E2 03 00             		 br	!!.L21
+ 619                             		.loc 1 117 0 is_stmt 0 discriminator 1
+ 620 0358 AF 00 00                		movw	ax, !_n
+ 621 035b BD F0                   		movw	r8, ax
+ 622 035d 44 CF 07                		cmpw	ax, #1999
+ 623 0360 71 FF                   		 xor1	CY, a.7
+ 624 0362 61 F3                   		 sknh
+ 625 0364 EC E2 03 00             		 br	!!.L21
+ 118:../src/r_main.c **** 			{
+ 119:../src/r_main.c **** 				now=0;
+ 626                             		.loc 1 119 0 is_stmt 1
+ 627 0368 F6                      		clrw	ax
+ 628 0369 BF 00 00                		movw	!_now, ax
+ 120:../src/r_main.c **** 				if(x[0]) now++;
+ 629                             		.loc 1 120 0
+ 630 036c AF 00 00                		movw	ax, !_x
+ 631 036f BD F0                   		movw	r8, ax
+ 632 0371 44 00 00                		cmpw	ax, #0
+ 633 0374 61 F8                   		 sknz
+ 634 0376 EC 86 03 00             		 br	!!.L22
+ 635                             		.loc 1 120 0 is_stmt 0 discriminator 1
+ 636 037a AF 00 00                		movw	ax, !_now
+ 637 037d BD F0                   		movw	r8, ax
+ 638 037f A6 F0                   		incw	r8
+ 639 0381 AD F0                   		movw	ax, r8
+ 640 0383 BF 00 00                		movw	!_now, ax
+ 641                             	.L22:
+ 121:../src/r_main.c **** 				if(x[1]) now+=2;
+ 642                             		.loc 1 121 0 is_stmt 1
+ 643 0386 AF 00 00                		movw	ax, !_x+2
+ 644 0389 BD F0                   		movw	r8, ax
+ 645 038b 44 00 00                		cmpw	ax, #0
+ 646 038e 61 F8                   		 sknz
+ 647 0390 EC A2 03 00             		 br	!!.L23
+ 648                             		.loc 1 121 0 is_stmt 0 discriminator 1
+ 649 0394 AF 00 00                		movw	ax, !_now
+ 650 0397 BD F0                   		movw	r8, ax
+ 651 0399 A6 F0                   		incw	r8 
+ 652 039b A6 F0                   		incw	r8
+ 653 039d AD F0                   		movw	ax, r8
+ 654 039f BF 00 00                		movw	!_now, ax
+ 655                             	.L23:
+ 122:../src/r_main.c **** 				if(x[2]) now+=4;
+ 656                             		.loc 1 122 0 is_stmt 1
+ 657 03a2 AF 00 00                		movw	ax, !_x+4
+ 658 03a5 BD F0                   		movw	r8, ax
+ 659 03a7 44 00 00                		cmpw	ax, #0
+ 660 03aa 61 F8                   		 sknz
+ 661 03ac EC BD 03 00             		 br	!!.L24
+ 662                             		.loc 1 122 0 is_stmt 0 discriminator 1
+ 663 03b0 AF 00 00                		movw	ax, !_now
+ 664 03b3 BD F0                   		movw	r8, ax
+ 665 03b5 04 04 00                		addw	ax, #4
+ 666 03b8 BD F0                   		movw	r8, ax
+ 667 03ba BF 00 00                		movw	!_now, ax
+ 668                             	.L24:
+ 123:../src/r_main.c **** 				if(x[3]) now+=8;
+ 669                             		.loc 1 123 0 is_stmt 1
+ 670 03bd AF 00 00                		movw	ax, !_x+6
+ 671 03c0 BD F0                   		movw	r8, ax
+ 672 03c2 44 00 00                		cmpw	ax, #0
+ 673 03c5 61 F8                   		 sknz
+ 674 03c7 EC D8 03 00             		 br	!!.L25
+ 675                             		.loc 1 123 0 is_stmt 0 discriminator 1
+ 676 03cb AF 00 00                		movw	ax, !_now
+ 677 03ce BD F0                   		movw	r8, ax
+ 678 03d0 04 08 00                		addw	ax, #8
+ 679 03d3 BD F0                   		movw	r8, ax
+ 680 03d5 BF 00 00                		movw	!_now, ax
+ 681                             	.L25:
+ 124:../src/r_main.c **** 				n=2000;
+ 682                             		.loc 1 124 0 is_stmt 1
+ 683 03d8 30 D0 07                		movw	ax, #2000
+ 684 03db BF 00 00                		movw	!_n, ax
+ 685 03de EC F8 03 00             		br	!!.L26
+ 686                             	.L21:
+ 125:../src/r_main.c **** 			}
+ 126:../src/r_main.c **** 		else if (n>=2000)
+ 687                             		.loc 1 126 0
+ 688 03e2 AF 00 00                		movw	ax, !_n
+ 689 03e5 BD F0                   		movw	r8, ax
+ 690 03e7 44 CF 07                		cmpw	ax, #1999
+ 691 03ea 71 FF                   		 xor1	CY, a.7
+ 692 03ec 61 E3                   		 skh
+ 693 03ee EC F8 03 00             		 br	!!.L26
+ 127:../src/r_main.c **** 			n=2000;
+ 694                             		.loc 1 127 0
+ 695 03f2 30 D0 07                		movw	ax, #2000
+ 696 03f5 BF 00 00                		movw	!_n, ax
+ 697                             	.L26:
+ 128:../src/r_main.c **** 
+ 129:../src/r_main.c **** 
+ 130:../src/r_main.c **** 		if(!count_flag) // All has sent already.
+ 698                             		.loc 1 130 0
+ 699 03f8 AF 00 00                		movw	ax, !_count_flag
+ 700 03fb BD F0                   		movw	r8, ax
+ 701 03fd 44 00 00                		cmpw	ax, #0
+ 702 0400 61 E8                   		 skz
+ 703 0402 EC 3E 06 00             		 br	!!.L27
+ 131:../src/r_main.c **** 		{
+ 132:../src/r_main.c **** 			if(old!=now && !stack_flag) // Check whether old different from new and stack.
+ 704                             		.loc 1 132 0
+ 705 0406 AF 00 00                		movw	ax, !_old
+ 706 0409 BD F2                   		movw	r10, ax
+ 707 040b AF 00 00                		movw	ax, !_now
+ 708 040e BD F0                   		movw	r8, ax
+ 709 0410 AD F2                   		movw	ax, r10
+ 710 0412 46 F0                   		cmpw	ax, r8
+ 711 0414 61 F8                   		 sknz
+ 712 0416 EC E6 04 00             		 br	!!.L28
+ 713                             		.loc 1 132 0 is_stmt 0 discriminator 1
+ 714 041a AF 00 00                		movw	ax, !_stack_flag
+ 715 041d BD F0                   		movw	r8, ax
+ 716 041f 44 00 00                		cmpw	ax, #0
+ 717 0422 61 E8                   		 skz
+ 718 0424 EC E6 04 00             		 br	!!.L28
+ 133:../src/r_main.c **** 				{
+ 134:../src/r_main.c **** 
+ 135:../src/r_main.c **** 					GET[25]='0';
+ 719                             		.loc 1 135 0 is_stmt 1
+ 720 0428 51 30                   		mov	a, #48
+ 721 042a 9F 00 00                		mov	!_GET+25, a
+ 136:../src/r_main.c **** 					GET[26]='0';
+ 722                             		.loc 1 136 0
+ 723 042d 51 30                   		mov	a, #48
+ 724 042f 9F 00 00                		mov	!_GET+26, a
+ 137:../src/r_main.c **** 					GET[27]='1';
+ 725                             		.loc 1 137 0
+ 726 0432 51 31                   		mov	a, #49
+ 727 0434 9F 00 00                		mov	!_GET+27, a
+ 138:../src/r_main.c **** 					CIPSEND[11]='0';
+ 728                             		.loc 1 138 0
+ 729 0437 51 30                   		mov	a, #48
+ 730 0439 9F 00 00                		mov	!_CIPSEND+11, a
+ 139:../src/r_main.c **** 					CIPSEND[12]='6';
+ 731                             		.loc 1 139 0
+ 732 043c 51 36                   		mov	a, #54
+ 733 043e 9F 00 00                		mov	!_CIPSEND+12, a
+ 140:../src/r_main.c **** 					CIPSEND[13]='3';
+ 734                             		.loc 1 140 0
+ 735 0441 51 33                   		mov	a, #51
+ 736 0443 9F 00 00                		mov	!_CIPSEND+13, a
+ 141:../src/r_main.c **** 					for(j=0;j<465;j++)
+ 737                             		.loc 1 141 0
+ 738 0446 F6                      		clrw	ax
+ 739 0447 BF 00 00                		movw	!_j, ax
+ 740 044a EC 6A 04 00             		br	!!.L29
+ 741                             	.L30:
+ 142:../src/r_main.c **** 						GET[35+j]=0;
+ 742                             		.loc 1 142 0 discriminator 3
+ 743 044e AF 00 00                		movw	ax, !_j
+ 744 0451 BD F0                   		movw	r8, ax
+ 745 0453 04 23 00                		addw	ax, #35
+ 746 0456 BD F0                   		movw	r8, ax
+ 747 0458 DA F0                   		movw	bc, r8
+ 748 045a F1                      		clrb	a
+ 749 045b 48 00 00                		mov	_GET[bc], a
+ 141:../src/r_main.c **** 					for(j=0;j<465;j++)
+ 750                             		.loc 1 141 0 discriminator 3
+ 751 045e AF 00 00                		movw	ax, !_j
+ 752 0461 BD F0                   		movw	r8, ax
+ 753 0463 A6 F0                   		incw	r8
+ 754 0465 AD F0                   		movw	ax, r8
+ 755 0467 BF 00 00                		movw	!_j, ax
+ 756                             	.L29:
+ 141:../src/r_main.c **** 					for(j=0;j<465;j++)
+ 757                             		.loc 1 141 0 is_stmt 0 discriminator 1
+ 758 046a AF 00 00                		movw	ax, !_j
+ 759 046d BD F0                   		movw	r8, ax
+ 760 046f 44 D0 01                		cmpw	ax, #464
+ 761 0472 71 FF                   		 xor1	CY, a.7
+ 762 0474 61 E3                   		 skh
+ 763 0476 EC 4E 04 00             		 br	!!.L30
+ 143:../src/r_main.c **** 					GET[38]=(now+'0');
+ 764                             		.loc 1 143 0 is_stmt 1
+ 765 047a AF 00 00                		movw	ax, !_now
+ 766 047d BD F0                   		movw	r8, ax
+ 767 047f 8D F0                   		mov	a, r8
+ 768 0481 0C 30                   		add	a, #48
+ 769 0483 9D F0                   		mov	r8, a
+ 770 0485 9F 00 00                		mov	!_GET+38, a
+ 144:../src/r_main.c **** 					GET[39]=',';
+ 771                             		.loc 1 144 0
+ 772 0488 51 2C                   		mov	a, #44
+ 773 048a 9F 00 00                		mov	!_GET+39, a
+ 145:../src/r_main.c **** 					for(j=0;j<21;j++)
+ 774                             		.loc 1 145 0
+ 775 048d F6                      		clrw	ax
+ 776 048e BF 00 00                		movw	!_j, ax
+ 777 0491 EC BC 04 00             		br	!!.L31
+ 778                             	.L32:
+ 146:../src/r_main.c **** 						GET[40+j]=TIME[j];
+ 779                             		.loc 1 146 0 discriminator 3
+ 780 0495 AF 00 00                		movw	ax, !_j
+ 781 0498 BD F0                   		movw	r8, ax
+ 782 049a 04 28 00                		addw	ax, #40
+ 783 049d BD F2                   		movw	r10, ax
+ 784 049f AF 00 00                		movw	ax, !_j
+ 785 04a2 BD F0                   		movw	r8, ax
+ 786 04a4 04 00 00                		addw	ax, #_TIME
+ 787 04a7 16                      		movw	hl, ax
+ 788 04a8 8B                      		mov	a, [hl]
+ 789 04a9 9D F0                   		mov	r8, a
+ 790 04ab DA F2                   		movw	bc, r10
+ 791 04ad 48 00 00                		mov	_GET[bc], a
+ 145:../src/r_main.c **** 					for(j=0;j<21;j++)
+ 792                             		.loc 1 145 0 discriminator 3
+ 793 04b0 AF 00 00                		movw	ax, !_j
+ 794 04b3 BD F0                   		movw	r8, ax
+ 795 04b5 A6 F0                   		incw	r8
+ 796 04b7 AD F0                   		movw	ax, r8
+ 797 04b9 BF 00 00                		movw	!_j, ax
+ 798                             	.L31:
+ 145:../src/r_main.c **** 					for(j=0;j<21;j++)
+ 799                             		.loc 1 145 0 is_stmt 0 discriminator 1
+ 800 04bc AF 00 00                		movw	ax, !_j
+ 801 04bf BD F0                   		movw	r8, ax
+ 802 04c1 44 14 00                		cmpw	ax, #20
+ 803 04c4 71 FF                   		 xor1	CY, a.7
+ 804 04c6 61 E3                   		 skh
+ 805 04c8 EC 95 04 00             		 br	!!.L32
+ 147:../src/r_main.c **** 					GET[61]='\r';
+ 806                             		.loc 1 147 0 is_stmt 1
+ 807 04cc 51 0D                   		mov	a, #13
+ 808 04ce 9F 00 00                		mov	!_GET+61, a
+ 148:../src/r_main.c **** 					GET[62]='\n';
+ 809                             		.loc 1 148 0
+ 810 04d1 51 0A                   		mov	a, #10
+ 811 04d3 9F 00 00                		mov	!_GET+62, a
+ 149:../src/r_main.c **** 					flag=1;
+ 812                             		.loc 1 149 0
+ 813 04d6 E6                      		onew	ax
+ 814 04d7 BF 00 00                		movw	!_flag, ax
+ 150:../src/r_main.c **** 					old=now;
+ 815                             		.loc 1 150 0
+ 816 04da AF 00 00                		movw	ax, !_now
+ 817 04dd BD F0                   		movw	r8, ax
+ 818 04df BF 00 00                		movw	!_old, ax
+ 819 04e2 EC 79 07 00             		br	!!.L36
+ 820                             	.L28:
+ 151:../src/r_main.c **** 				}
+ 152:../src/r_main.c **** 			 else if(stack_flag)
+ 821                             		.loc 1 152 0
+ 822 04e6 AF 00 00                		movw	ax, !_stack_flag
+ 823 04e9 BD F0                   		movw	r8, ax
+ 824 04eb 44 00 00                		cmpw	ax, #0
+ 825 04ee 61 F8                   		 sknz
+ 826 04f0 EC 79 07 00             		 br	!!.L36
+ 153:../src/r_main.c **** 				{
+ 154:../src/r_main.c **** 					for(k=1;k<num;k++)
+ 827                             		.loc 1 154 0
+ 828 04f4 E6                      		onew	ax
+ 829 04f5 BF 00 00                		movw	!_k, ax
+ 830 04f8 EC 23 05 00             		br	!!.L34
+ 831                             	.L35:
+ 155:../src/r_main.c **** 						GET[34+k]=s[k];
+ 832                             		.loc 1 155 0 discriminator 3
+ 833 04fc AF 00 00                		movw	ax, !_k
+ 834 04ff BD F0                   		movw	r8, ax
+ 835 0501 04 22 00                		addw	ax, #34
+ 836 0504 BD F2                   		movw	r10, ax
+ 837 0506 AF 00 00                		movw	ax, !_k
+ 838 0509 BD F0                   		movw	r8, ax
+ 839 050b 04 00 00                		addw	ax, #_s
+ 840 050e 16                      		movw	hl, ax
+ 841 050f 8B                      		mov	a, [hl]
+ 842 0510 9D F0                   		mov	r8, a
+ 843 0512 DA F2                   		movw	bc, r10
+ 844 0514 48 00 00                		mov	_GET[bc], a
+ 154:../src/r_main.c **** 						GET[34+k]=s[k];
+ 845                             		.loc 1 154 0 discriminator 3
+ 846 0517 AF 00 00                		movw	ax, !_k
+ 847 051a BD F0                   		movw	r8, ax
+ 848 051c A6 F0                   		incw	r8
+ 849 051e AD F0                   		movw	ax, r8
+ 850 0520 BF 00 00                		movw	!_k, ax
+ 851                             	.L34:
+ 154:../src/r_main.c **** 						GET[34+k]=s[k];
+ 852                             		.loc 1 154 0 is_stmt 0 discriminator 1
+ 853 0523 AF 00 00                		movw	ax, !_k
+ 854 0526 BD F2                   		movw	r10, ax
+ 855 0528 AF 00 00                		movw	ax, !_num
+ 856 052b BD F0                   		movw	r8, ax
+ 857 052d AD F2                   		movw	ax, r10
+ 858 052f 46 F0                   		cmpw	ax, r8
+ 859 0531 71 FF                   		 xor1	CY, a.7
+ 860 0533 71 77 F1                		 xor1	CY, r9.7
+ 861 0536 61 D8                   		 sknc
+ 862 0538 EC FC 04 00             		 br	!!.L35
+ 156:../src/r_main.c **** 					GET[34+k]='\r';
+ 863                             		.loc 1 156 0 is_stmt 1
+ 864 053c AF 00 00                		movw	ax, !_k
+ 865 053f BD F0                   		movw	r8, ax
+ 866 0541 04 22 00                		addw	ax, #34
+ 867 0544 BD F0                   		movw	r8, ax
+ 868 0546 DA F0                   		movw	bc, r8
+ 869 0548 51 0D                   		mov	a, #13
+ 870 054a 48 00 00                		mov	_GET[bc], a
+ 157:../src/r_main.c **** 					GET[35+k]='\n';
+ 871                             		.loc 1 157 0
+ 872 054d AF 00 00                		movw	ax, !_k
+ 873 0550 BD F0                   		movw	r8, ax
+ 874 0552 04 23 00                		addw	ax, #35
+ 875 0555 BD F0                   		movw	r8, ax
+ 876 0557 DA F0                   		movw	bc, r8
+ 877 0559 51 0A                   		mov	a, #10
+ 878 055b 48 00 00                		mov	_GET[bc], a
+ 158:../src/r_main.c **** 					GET[25]=((num/25)/100)+'0';
+ 879                             		.loc 1 158 0
+ 880 055e AF 00 00                		movw	ax, !_num
+ 881 0561 BD F0                   		movw	r8, ax
+ 882 0563 B8 00                   		movw	[sp], ax
+ 883 0565 30 C4 09                		movw	ax, #2500
+ 884 0568 B8 02                   		movw	[sp+2], ax
+ 885 056a FC 00 00 00             		call	!!___divhi3
+ 886 056e 8D F0                   		mov	a, r8
+ 887 0570 0C 30                   		add	a, #48
+ 888 0572 9D F0                   		mov	r8, a
+ 889 0574 9F 00 00                		mov	!_GET+25, a
+ 159:../src/r_main.c **** 					GET[26]=((num/250)%10)+'0';
+ 890                             		.loc 1 159 0
+ 891 0577 AF 00 00                		movw	ax, !_num
+ 892 057a BD F0                   		movw	r8, ax
+ 893 057c B8 00                   		movw	[sp], ax
+ 894 057e 30 FA 00                		movw	ax, #250
+ 895 0581 B8 02                   		movw	[sp+2], ax
+ 896 0583 FC 00 00 00             		call	!!___divhi3
+ 897 0587 AD F0                   		movw	ax, r8
+ 898 0589 B8 00                   		movw	[sp], ax
+ 899 058b 30 0A 00                		movw	ax, #10
+ 900 058e B8 02                   		movw	[sp+2], ax
+ 901 0590 FC 00 00 00             		call	!!___modhi3
+ 902 0594 8D F0                   		mov	a, r8
+ 903 0596 0C 30                   		add	a, #48
+ 904 0598 9D F0                   		mov	r8, a
+ 905 059a 9F 00 00                		mov	!_GET+26, a
+ 160:../src/r_main.c **** 					GET[27]=((num/25)%10)+'0';
+ 906                             		.loc 1 160 0
+ 907 059d AF 00 00                		movw	ax, !_num
+ 908 05a0 BD F0                   		movw	r8, ax
+ 909 05a2 B8 00                   		movw	[sp], ax
+ 910 05a4 30 19 00                		movw	ax, #25
+ 911 05a7 B8 02                   		movw	[sp+2], ax
+ 912 05a9 FC 00 00 00             		call	!!___divhi3
+ 913 05ad AD F0                   		movw	ax, r8
+ 914 05af B8 00                   		movw	[sp], ax
+ 915 05b1 30 0A 00                		movw	ax, #10
+ 916 05b4 B8 02                   		movw	[sp+2], ax
+ 917 05b6 FC 00 00 00             		call	!!___modhi3
+ 918 05ba 8D F0                   		mov	a, r8
+ 919 05bc 0C 30                   		add	a, #48
+ 920 05be 9D F0                   		mov	r8, a
+ 921 05c0 9F 00 00                		mov	!_GET+27, a
+ 161:../src/r_main.c **** 					CIPSEND[11]=((num+36)/100)+'0';
+ 922                             		.loc 1 161 0
+ 923 05c3 AF 00 00                		movw	ax, !_num
+ 924 05c6 BD F0                   		movw	r8, ax
+ 925 05c8 04 24 00                		addw	ax, #36
+ 926 05cb BD F0                   		movw	r8, ax
+ 927 05cd B8 00                   		movw	[sp], ax
+ 928 05cf 30 64 00                		movw	ax, #100
+ 929 05d2 B8 02                   		movw	[sp+2], ax
+ 930 05d4 FC 00 00 00             		call	!!___divhi3
+ 931 05d8 8D F0                   		mov	a, r8
+ 932 05da 0C 30                   		add	a, #48
+ 933 05dc 9D F0                   		mov	r8, a
+ 934 05de 9F 00 00                		mov	!_CIPSEND+11, a
+ 162:../src/r_main.c **** 					CIPSEND[12]=(((num+36)/10)%10)+'0';
+ 935                             		.loc 1 162 0
+ 936 05e1 AF 00 00                		movw	ax, !_num
+ 937 05e4 BD F0                   		movw	r8, ax
+ 938 05e6 04 24 00                		addw	ax, #36
+ 939 05e9 BD F0                   		movw	r8, ax
+ 940 05eb B8 00                   		movw	[sp], ax
+ 941 05ed 30 0A 00                		movw	ax, #10
+ 942 05f0 B8 02                   		movw	[sp+2], ax
+ 943 05f2 FC 00 00 00             		call	!!___divhi3
+ 944 05f6 AD F0                   		movw	ax, r8
+ 945 05f8 B8 00                   		movw	[sp], ax
+ 946 05fa 30 0A 00                		movw	ax, #10
+ 947 05fd B8 02                   		movw	[sp+2], ax
+ 948 05ff FC 00 00 00             		call	!!___modhi3
+ 949 0603 8D F0                   		mov	a, r8
+ 950 0605 0C 30                   		add	a, #48
+ 951 0607 9D F0                   		mov	r8, a
+ 952 0609 9F 00 00                		mov	!_CIPSEND+12, a
+ 163:../src/r_main.c **** 					CIPSEND[13]=((num+36)%10)+'0';
+ 953                             		.loc 1 163 0
+ 954 060c AF 00 00                		movw	ax, !_num
+ 955 060f BD F0                   		movw	r8, ax
+ 956 0611 04 24 00                		addw	ax, #36
+ 957 0614 BD F0                   		movw	r8, ax
+ 958 0616 B8 00                   		movw	[sp], ax
+ 959 0618 30 0A 00                		movw	ax, #10
+ 960 061b B8 02                   		movw	[sp+2], ax
+ 961 061d FC 00 00 00             		call	!!___modhi3
+ 962 0621 8D F0                   		mov	a, r8
+ 963 0623 0C 30                   		add	a, #48
+ 964 0625 9D F0                   		mov	r8, a
+ 965 0627 9F 00 00                		mov	!_CIPSEND+13, a
+ 164:../src/r_main.c **** 					stack_flag=0;
+ 966                             		.loc 1 164 0
+ 967 062a F6                      		clrw	ax
+ 968 062b BF 00 00                		movw	!_stack_flag, ax
+ 165:../src/r_main.c **** 					k=0; num=0;
+ 969                             		.loc 1 165 0
+ 970 062e F6                      		clrw	ax
+ 971 062f BF 00 00                		movw	!_k, ax
+ 972 0632 F6                      		clrw	ax
+ 973 0633 BF 00 00                		movw	!_num, ax
+ 166:../src/r_main.c **** 					flag=1;
+ 974                             		.loc 1 166 0
+ 975 0636 E6                      		onew	ax
+ 976 0637 BF 00 00                		movw	!_flag, ax
+ 977 063a EC 79 07 00             		br	!!.L36
+ 978                             	.L27:
+ 167:../src/r_main.c **** 				}
+ 168:../src/r_main.c **** 			}
+ 169:../src/r_main.c **** 		else
+ 170:../src/r_main.c **** 			{
+ 171:../src/r_main.c **** 				if( GET[36]!= (now+'0') && old!=now)
+ 979                             		.loc 1 171 0
+ 980 063e 8F 00 00                		mov	a, !_GET+36
+ 981 0641 9D F0                   		mov	r8, a
+ 982 0643 70                      		mov	x, a 
+ 983 0644 F1                      		clrb	a
+ 984 0645 BD F2                   		movw	r10, ax
+ 985 0647 AF 00 00                		movw	ax, !_now
+ 986 064a BD F0                   		movw	r8, ax
+ 987 064c 04 30 00                		addw	ax, #48
+ 988 064f BD F0                   		movw	r8, ax
+ 989 0651 AD F2                   		movw	ax, r10
+ 990 0653 46 F0                   		cmpw	ax, r8
+ 991 0655 61 F8                   		 sknz
+ 992 0657 EC 79 07 00             		 br	!!.L36
+ 993                             		.loc 1 171 0 is_stmt 0 discriminator 1
+ 994 065b AF 00 00                		movw	ax, !_old
+ 995 065e BD F2                   		movw	r10, ax
+ 996 0660 AF 00 00                		movw	ax, !_now
+ 997 0663 BD F0                   		movw	r8, ax
+ 998 0665 AD F2                   		movw	ax, r10
+ 999 0667 46 F0                   		cmpw	ax, r8
+ 1000 0669 61 F8                   		 sknz
+ 1001 066b EC 79 07 00             		 br	!!.L36
+ 172:../src/r_main.c **** 					{
+ 173:../src/r_main.c **** 						 s[num++]=',';
+ 1002                             		.loc 1 173 0 is_stmt 1
+ 1003 066f AF 00 00                		movw	ax, !_num
+ 1004 0672 BD F0                   		movw	r8, ax
+ 1005 0674 A1                      		incw	ax
+ 1006 0675 BD F2                   		movw	r10, ax
+ 1007 0677 BF 00 00                		movw	!_num, ax
+ 1008 067a DA F0                   		movw	bc, r8
+ 1009 067c 51 2C                   		mov	a, #44
+ 1010 067e 48 00 00                		mov	_s[bc], a
+ 174:../src/r_main.c **** 						 s[num++]=(no/100+'0');
+ 1011                             		.loc 1 174 0
+ 1012 0681 AF 00 00                		movw	ax, !_num
+ 1013 0684 BD E8                   		movw	r16, ax
+ 1014 0686 A1                      		incw	ax
+ 1015 0687 BD F0                   		movw	r8, ax
+ 1016 0689 BF 00 00                		movw	!_num, ax
+ 1017 068c AF 00 00                		movw	ax, !_no
+ 1018 068f BD F0                   		movw	r8, ax
+ 1019 0691 B8 00                   		movw	[sp], ax
+ 1020 0693 30 64 00                		movw	ax, #100
+ 1021 0696 B8 02                   		movw	[sp+2], ax
+ 1022 0698 FC 00 00 00             		call	!!___divhi3
+ 1023 069c 8D F0                   		mov	a, r8
+ 1024 069e 0C 30                   		add	a, #48
+ 1025 06a0 9D F0                   		mov	r8, a
+ 1026 06a2 DA E8                   		movw	bc, r16
+ 1027 06a4 48 00 00                		mov	_s[bc], a
+ 175:../src/r_main.c **** 						 s[num++]=((no/10)%10+'0');
+ 1028                             		.loc 1 175 0
+ 1029 06a7 AF 00 00                		movw	ax, !_num
+ 1030 06aa BD E8                   		movw	r16, ax
+ 1031 06ac A1                      		incw	ax
+ 1032 06ad BD F0                   		movw	r8, ax
+ 1033 06af BF 00 00                		movw	!_num, ax
+ 1034 06b2 AF 00 00                		movw	ax, !_no
+ 1035 06b5 BD F0                   		movw	r8, ax
+ 1036 06b7 B8 00                   		movw	[sp], ax
+ 1037 06b9 30 0A 00                		movw	ax, #10
+ 1038 06bc B8 02                   		movw	[sp+2], ax
+ 1039 06be FC 00 00 00             		call	!!___divhi3
+ 1040 06c2 AD F0                   		movw	ax, r8
+ 1041 06c4 B8 00                   		movw	[sp], ax
+ 1042 06c6 30 0A 00                		movw	ax, #10
+ 1043 06c9 B8 02                   		movw	[sp+2], ax
+ 1044 06cb FC 00 00 00             		call	!!___modhi3
+ 1045 06cf 8D F0                   		mov	a, r8
+ 1046 06d1 0C 30                   		add	a, #48
+ 1047 06d3 9D F0                   		mov	r8, a
+ 1048 06d5 DA E8                   		movw	bc, r16
+ 1049 06d7 48 00 00                		mov	_s[bc], a
+ 176:../src/r_main.c **** 						 s[num++]=(no%10+'0');
+ 1050                             		.loc 1 176 0
+ 1051 06da AF 00 00                		movw	ax, !_num
+ 1052 06dd BD E8                   		movw	r16, ax
+ 1053 06df A1                      		incw	ax
+ 1054 06e0 BD F0                   		movw	r8, ax
+ 1055 06e2 BF 00 00                		movw	!_num, ax
+ 1056 06e5 AF 00 00                		movw	ax, !_no
+ 1057 06e8 BD F0                   		movw	r8, ax
+ 1058 06ea B8 00                   		movw	[sp], ax
+ 1059 06ec 30 0A 00                		movw	ax, #10
+ 1060 06ef B8 02                   		movw	[sp+2], ax
+ 1061 06f1 FC 00 00 00             		call	!!___modhi3
+ 1062 06f5 8D F0                   		mov	a, r8
+ 1063 06f7 0C 30                   		add	a, #48
+ 1064 06f9 9D F0                   		mov	r8, a
+ 1065 06fb DA E8                   		movw	bc, r16
+ 1066 06fd 48 00 00                		mov	_s[bc], a
+ 177:../src/r_main.c **** 						 s[num++]=(now + '0');
+ 1067                             		.loc 1 177 0
+ 1068 0700 AF 00 00                		movw	ax, !_num
+ 1069 0703 BD F0                   		movw	r8, ax
+ 1070 0705 A1                      		incw	ax
+ 1071 0706 BD F2                   		movw	r10, ax
+ 1072 0708 BF 00 00                		movw	!_num, ax
+ 1073 070b AF 00 00                		movw	ax, !_now
+ 1074 070e BD F2                   		movw	r10, ax
+ 1075 0710 8D F2                   		mov	a, r10
+ 1076 0712 0C 30                   		add	a, #48
+ 1077 0714 9D F2                   		mov	r10, a
+ 1078 0716 DA F0                   		movw	bc, r8
+ 1079 0718 48 00 00                		mov	_s[bc], a
+ 178:../src/r_main.c **** 						 s[num++]=',';
+ 1080                             		.loc 1 178 0
+ 1081 071b AF 00 00                		movw	ax, !_num
+ 1082 071e BD F0                   		movw	r8, ax
+ 1083 0720 A1                      		incw	ax
+ 1084 0721 BD F2                   		movw	r10, ax
+ 1085 0723 BF 00 00                		movw	!_num, ax
+ 1086 0726 DA F0                   		movw	bc, r8
+ 1087 0728 51 2C                   		mov	a, #44
+ 1088 072a 48 00 00                		mov	_s[bc], a
+ 179:../src/r_main.c **** 						 for(j=0;j<21;j++)
+ 1089                             		.loc 1 179 0
+ 1090 072d F6                      		clrw	ax
+ 1091 072e BF 00 00                		movw	!_j, ax
+ 1092 0731 EC 5D 07 00             		br	!!.L37
+ 1093                             	.L38:
+ 180:../src/r_main.c **** 							 s[num++]=TIME[j];
+ 1094                             		.loc 1 180 0 discriminator 3
+ 1095 0735 AF 00 00                		movw	ax, !_num
+ 1096 0738 BD F0                   		movw	r8, ax
+ 1097 073a A1                      		incw	ax
+ 1098 073b BD F2                   		movw	r10, ax
+ 1099 073d BF 00 00                		movw	!_num, ax
+ 1100 0740 AF 00 00                		movw	ax, !_j
+ 1101 0743 BD F2                   		movw	r10, ax
+ 1102 0745 04 00 00                		addw	ax, #_TIME
+ 1103 0748 16                      		movw	hl, ax
+ 1104 0749 8B                      		mov	a, [hl]
+ 1105 074a 9D F2                   		mov	r10, a
+ 1106 074c DA F0                   		movw	bc, r8
+ 1107 074e 48 00 00                		mov	_s[bc], a
+ 179:../src/r_main.c **** 						 for(j=0;j<21;j++)
+ 1108                             		.loc 1 179 0 discriminator 3
+ 1109 0751 AF 00 00                		movw	ax, !_j
+ 1110 0754 BD F0                   		movw	r8, ax
+ 1111 0756 A6 F0                   		incw	r8
+ 1112 0758 AD F0                   		movw	ax, r8
+ 1113 075a BF 00 00                		movw	!_j, ax
+ 1114                             	.L37:
+ 179:../src/r_main.c **** 						 for(j=0;j<21;j++)
+ 1115                             		.loc 1 179 0 is_stmt 0 discriminator 1
+ 1116 075d AF 00 00                		movw	ax, !_j
+ 1117 0760 BD F0                   		movw	r8, ax
+ 1118 0762 44 14 00                		cmpw	ax, #20
+ 1119 0765 71 FF                   		 xor1	CY, a.7
+ 1120 0767 61 E3                   		 skh
+ 1121 0769 EC 35 07 00             		 br	!!.L38
+ 181:../src/r_main.c **** 						old=now;
+ 1122                             		.loc 1 181 0 is_stmt 1
+ 1123 076d AF 00 00                		movw	ax, !_now
+ 1124 0770 BD F0                   		movw	r8, ax
+ 1125 0772 BF 00 00                		movw	!_old, ax
+ 182:../src/r_main.c **** 						stack_flag=1;
+ 1126                             		.loc 1 182 0
+ 1127 0775 E6                      		onew	ax
+ 1128 0776 BF 00 00                		movw	!_stack_flag, ax
+ 1129                             	.L36:
+ 183:../src/r_main.c **** 					}
+ 184:../src/r_main.c **** 			}
+ 185:../src/r_main.c **** 		 R_MAIN_COMMAND();
+ 1130                             		.loc 1 185 0
+ 1131 0779 FC 00 00 00             		call	!!%code(_R_MAIN_COMMAND)
+ 1132                             	.LBE2:
+ 186:../src/r_main.c **** 	}
+ 1133                             		.loc 1 186 0
+ 1134 077d EC 2B 00 00             		br	!!.L39
+ 1135                             	.LFE0:
+ 1137                             		.global	_R_MAIN_UserInit
+ 1139                             	_R_MAIN_UserInit:
+ 1140                             	.LFB1:
+ 187:../src/r_main.c ****     /* End user code. Do not edit comment generated here */
+ 188:../src/r_main.c **** }
+ 189:../src/r_main.c **** 
+ 190:../src/r_main.c **** 
+ 191:../src/r_main.c **** /**************************************************************************************************
+ 192:../src/r_main.c **** * Function Name: R_MAIN_UserInit
+ 193:../src/r_main.c **** * Description  : This function adds user code before implementing main function.
+ 194:../src/r_main.c **** * Arguments    : None
+ 195:../src/r_main.c **** * Return Value : None
+ 196:../src/r_main.c **** ***************************************************************************************************
+ 197:../src/r_main.c **** void R_MAIN_UserInit(void)
+ 198:../src/r_main.c **** {
+ 1141                             		.loc 1 198 0
+ 199:../src/r_main.c ****     /* Start user code. Do not edit comment generated here */
+ 200:../src/r_main.c ****     EI();
+ 1142                             		.loc 1 200 0
+ 1143                             	 ; 200 "../src/r_main.c" 1
+ 1144 0781 71 7A FA                		ei
+ 1145                             	 ; 0 "" 2
+ 201:../src/r_main.c ****     /* End user code. Do not edit comment generated here */
+ 202:../src/r_main.c **** }
+ 1146                             		.loc 1 202 0
+ 1147 0784 D7                      		ret
+ 1148                             	.LFE1:
+ 1150                             		.global	_R_MAIN_CLEAR
+ 1152                             	_R_MAIN_CLEAR:
+ 1153                             	.LFB2:
+ 203:../src/r_main.c **** 
+ 204:../src/r_main.c **** /* Start user code for adding. Do not edit comment generated here */
+ 205:../src/r_main.c **** 
+ 206:../src/r_main.c **** void R_MAIN_CLEAR(char *array)  // Clear command[100]
+ 207:../src/r_main.c **** {
+ 1154                             		.loc 1 207 0
+ 208:../src/r_main.c **** 	for(j=0;j<100;j++)
+ 1155                             		.loc 1 208 0
+ 1156 0785 F6                      		clrw	ax
+ 1157 0786 BF 00 00                		movw	!_j, ax
+ 1158 0789 EC AC 07 00             		br	!!.L42
+ 1159                             	.L43:
+ 209:../src/r_main.c **** 		array[j]=0;
+ 1160                             		.loc 1 209 0 discriminator 3
+ 1161 078d AF 00 00                		movw	ax, !_j
+ 1162 0790 BD F0                   		movw	r8, ax
+ 1163 0792 A8 04                   		movw	ax, [sp+4]
+ 1164 0794 06 F0                   		addw	ax, r8
+ 1165 0796 BD F0                   		movw	r8, ax
+ 1166 0798 BD F2                   		movw	r10, ax
+ 1167 079a DA F2                   		movw	bc, r10
+ 1168 079c F1                      		clrb	a
+ 1169 079d 48 00 00                		mov	[bc], a
+ 208:../src/r_main.c **** 	for(j=0;j<100;j++)
+ 1170                             		.loc 1 208 0 discriminator 3
+ 1171 07a0 AF 00 00                		movw	ax, !_j
+ 1172 07a3 BD F0                   		movw	r8, ax
+ 1173 07a5 A6 F0                   		incw	r8
+ 1174 07a7 AD F0                   		movw	ax, r8
+ 1175 07a9 BF 00 00                		movw	!_j, ax
+ 1176                             	.L42:
+ 208:../src/r_main.c **** 	for(j=0;j<100;j++)
+ 1177                             		.loc 1 208 0 is_stmt 0 discriminator 1
+ 1178 07ac AF 00 00                		movw	ax, !_j
+ 1179 07af BD F0                   		movw	r8, ax
+ 1180 07b1 44 63 00                		cmpw	ax, #99
+ 1181 07b4 71 FF                   		 xor1	CY, a.7
+ 1182 07b6 61 E3                   		 skh
+ 1183 07b8 EC 8D 07 00             		 br	!!.L43
+ 210:../src/r_main.c **** 	i=0;
+ 1184                             		.loc 1 210 0 is_stmt 1
+ 1185 07bc F6                      		clrw	ax
+ 1186 07bd BF 00 00                		movw	!_i, ax
+ 211:../src/r_main.c **** }
+ 1187                             		.loc 1 211 0
+ 1188 07c0 D7                      		ret
+ 1189                             	.LFE2:
+ 1191                             		.global	_FINDWORD
+ 1193                             	_FINDWORD:
+ 1194                             	.LFB3:
+ 212:../src/r_main.c **** 
+ 213:../src/r_main.c **** int FINDWORD(char *com, char *word ,int comlen, int wordlen)  // find string
+ 214:../src/r_main.c **** {
+ 1195                             		.loc 1 214 0
+ 1196                             		; start of function
+ 1197                             		; locals: 2 bytes
+ 1198 07c1 20 02                   		subw	sp, #2
+ 1199                             	.LCFI2:
+ 215:../src/r_main.c **** 	for(j=0;j<comlen;j++)
+ 1200                             		.loc 1 215 0
+ 1201 07c3 F6                      		clrw	ax
+ 1202 07c4 BF 00 00                		movw	!_j, ax
+ 1203 07c7 EC CC 08 00             		br	!!.L45
+ 1204                             	.L56:
+ 216:../src/r_main.c **** 	{
+ 217:../src/r_main.c **** 		if( *word == *com )
+ 1205                             		.loc 1 217 0
+ 1206 07cb A8 08                   		movw	ax, [sp+8]
+ 1207 07cd BD F0                   		movw	r8, ax
+ 1208 07cf BD F4                   		movw	r12, ax
+ 1209 07d1 FA F4                   		movw	hl, r12
+ 1210 07d3 8B                      		mov	a, [hl]
+ 1211 07d4 9D F2                   		mov	r10, a
+ 1212 07d6 A8 06                   		movw	ax, [sp+6]
+ 1213 07d8 BD F0                   		movw	r8, ax
+ 1214 07da BD F4                   		movw	r12, ax
+ 1215 07dc FA F4                   		movw	hl, r12
+ 1216 07de 8B                      		mov	a, [hl]
+ 1217 07df 9D F0                   		mov	r8, a
+ 1218 07e1 8D F2                   		mov	a, r10
+ 1219 07e3 4B F0                   		cmp	a, r8
+ 1220 07e5 61 E8                   		 skz
+ 1221 07e7 EC 9F 08 00             		 br	!!.L46
+ 218:../src/r_main.c **** 			for(l=0;l<wordlen;l++)
+ 1222                             		.loc 1 218 0
+ 1223 07eb F6                      		clrw	ax
+ 1224 07ec BF 00 00                		movw	!_l, ax
+ 1225 07ef EC 83 08 00             		br	!!.L47
+ 1226                             	.L52:
+ 219:../src/r_main.c **** 			{
+ 220:../src/r_main.c **** 				if( *word != *com ) {
+ 1227                             		.loc 1 220 0
+ 1228 07f3 A8 08                   		movw	ax, [sp+8]
+ 1229 07f5 BD F0                   		movw	r8, ax
+ 1230 07f7 BD F4                   		movw	r12, ax
+ 1231 07f9 FA F4                   		movw	hl, r12
+ 1232 07fb 8B                      		mov	a, [hl]
+ 1233 07fc 9D F2                   		mov	r10, a
+ 1234 07fe A8 06                   		movw	ax, [sp+6]
+ 1235 0800 BD F0                   		movw	r8, ax
+ 1236 0802 BD F4                   		movw	r12, ax
+ 1237 0804 FA F4                   		movw	hl, r12
+ 1238 0806 8B                      		mov	a, [hl]
+ 1239 0807 9D F0                   		mov	r8, a
+ 1240 0809 8D F2                   		mov	a, r10
+ 1241 080b 4B F0                   		cmp	a, r8
+ 1242 080d 61 F8                   		 sknz
+ 1243 080f EC 3B 08 00             		 br	!!.L48
+ 221:../src/r_main.c **** 					j+=l; word-=l;
+ 1244                             		.loc 1 221 0
+ 1245 0813 AF 00 00                		movw	ax, !_j
+ 1246 0816 BD F2                   		movw	r10, ax
+ 1247 0818 AF 00 00                		movw	ax, !_l
+ 1248 081b BD F0                   		movw	r8, ax
+ 1249 081d AD F2                   		movw	ax, r10
+ 1250 081f 06 F0                   		addw	ax, r8
+ 1251 0821 BD F0                   		movw	r8, ax
+ 1252 0823 BF 00 00                		movw	!_j, ax
+ 1253 0826 AF 00 00                		movw	ax, !_l
+ 1254 0829 BD F0                   		movw	r8, ax
+ 1255 082b F6                      		clrw	ax
+ 1256 082c 26 F0                   		subw	ax, r8
+ 1257 082e BD F0                   		movw	r8, ax
+ 1258 0830 A8 08                   		movw	ax, [sp+8]
+ 1259 0832 06 F0                   		addw	ax, r8
+ 1260 0834 B8 08                   		movw	[sp+8], ax
+ 222:../src/r_main.c **** 					break; }
+ 1261                             		.loc 1 222 0
+ 1262 0836 00                      		nop
+ 1263 0837 EC A4 08 00             		br	!!.L53
+ 1264                             	.L48:
+ 223:../src/r_main.c **** 				else if(l==(wordlen-1)){
+ 1265                             		.loc 1 223 0
+ 1266 083b A8 0C                   		movw	ax, [sp+12]
+ 1267 083d B1                      		decw	ax
+ 1268 083e BD F2                   		movw	r10, ax
+ 1269 0840 AF 00 00                		movw	ax, !_l
+ 1270 0843 BD F0                   		movw	r8, ax
+ 1271 0845 AD F2                   		movw	ax, r10
+ 1272 0847 46 F0                   		cmpw	ax, r8
+ 1273 0849 61 E8                   		 skz
+ 1274 084b EC 6D 08 00             		 br	!!.L50
+ 224:../src/r_main.c **** 					t=j+l+1;
+ 1275                             		.loc 1 224 0
+ 1276 084f AF 00 00                		movw	ax, !_j
+ 1277 0852 BD F2                   		movw	r10, ax
+ 1278 0854 AF 00 00                		movw	ax, !_l
+ 1279 0857 BD F0                   		movw	r8, ax
+ 1280 0859 AD F2                   		movw	ax, r10
+ 1281 085b 06 F0                   		addw	ax, r8
+ 1282 085d BD F0                   		movw	r8, ax
+ 1283 085f A6 F0                   		incw	r8
+ 1284 0861 AD F0                   		movw	ax, r8
+ 1285 0863 BF 00 00                		movw	!_t, ax
+ 225:../src/r_main.c **** 					return 1;
+ 1286                             		.loc 1 225 0
+ 1287 0866 E6                      		onew	ax
+ 1288 0867 B8 00                   		movw	[sp], ax
+ 1289 0869 EC E7 08 00             		br	!!.L51
+ 1290                             	.L50:
+ 226:../src/r_main.c **** 				}
+ 227:../src/r_main.c **** 				word++;
+ 1291                             		.loc 1 227 0 discriminator 2
+ 1292 086d A8 08                   		movw	ax, [sp+8]
+ 1293 086f A1                      		incw	ax
+ 1294 0870 B8 08                   		movw	[sp+8], ax
+ 228:../src/r_main.c **** 				com++;
+ 1295                             		.loc 1 228 0 discriminator 2
+ 1296 0872 A8 06                   		movw	ax, [sp+6]
+ 1297 0874 A1                      		incw	ax
+ 1298 0875 B8 06                   		movw	[sp+6], ax
+ 218:../src/r_main.c **** 			{
+ 1299                             		.loc 1 218 0 discriminator 2
+ 1300 0877 AF 00 00                		movw	ax, !_l
+ 1301 087a BD F0                   		movw	r8, ax
+ 1302 087c A6 F0                   		incw	r8
+ 1303 087e AD F0                   		movw	ax, r8
+ 1304 0880 BF 00 00                		movw	!_l, ax
+ 1305                             	.L47:
+ 218:../src/r_main.c **** 			{
+ 1306                             		.loc 1 218 0 is_stmt 0 discriminator 1
+ 1307 0883 AF 00 00                		movw	ax, !_l
+ 1308 0886 BD F2                   		movw	r10, ax
+ 1309 0888 A8 0C                   		movw	ax, [sp+12]
+ 1310 088a BD F0                   		movw	r8, ax
+ 1311 088c AD F2                   		movw	ax, r10
+ 1312 088e 46 F0                   		cmpw	ax, r8
+ 1313 0890 71 FF                   		 xor1	CY, a.7
+ 1314 0892 71 77 F1                		 xor1	CY, r9.7
+ 1315 0895 61 D8                   		 sknc
+ 1316 0897 EC F3 07 00             		 br	!!.L52
+ 1317 089b EC A4 08 00             		br	!!.L53
+ 1318                             	.L46:
+ 229:../src/r_main.c **** 			}
+ 230:../src/r_main.c **** 		else com++;
+ 1319                             		.loc 1 230 0 is_stmt 1
+ 1320 089f A8 06                   		movw	ax, [sp+6]
+ 1321 08a1 A1                      		incw	ax
+ 1322 08a2 B8 06                   		movw	[sp+6], ax
+ 1323                             	.L53:
+ 231:../src/r_main.c **** 		if(j>=comlen)break;
+ 1324                             		.loc 1 231 0
+ 1325 08a4 AF 00 00                		movw	ax, !_j
+ 1326 08a7 BD F2                   		movw	r10, ax
+ 1327 08a9 A8 0A                   		movw	ax, [sp+10]
+ 1328 08ab BD F0                   		movw	r8, ax
+ 1329 08ad AD F2                   		movw	ax, r10
+ 1330 08af 46 F0                   		cmpw	ax, r8
+ 1331 08b1 71 FF                   		 xor1	CY, a.7
+ 1332 08b3 71 77 F1                		 xor1	CY, r9.7
+ 1333 08b6 61 D8                   		 sknc
+ 1334 08b8 EC C0 08 00             		 br	!!.L54
+ 1335 08bc EC E4 08 00             		br	!!.L55
+ 1336                             	.L54:
+ 215:../src/r_main.c **** 	{
+ 1337                             		.loc 1 215 0 discriminator 2
+ 1338 08c0 AF 00 00                		movw	ax, !_j
+ 1339 08c3 BD F0                   		movw	r8, ax
+ 1340 08c5 A6 F0                   		incw	r8
+ 1341 08c7 AD F0                   		movw	ax, r8
+ 1342 08c9 BF 00 00                		movw	!_j, ax
+ 1343                             	.L45:
+ 215:../src/r_main.c **** 	{
+ 1344                             		.loc 1 215 0 is_stmt 0 discriminator 1
+ 1345 08cc AF 00 00                		movw	ax, !_j
+ 1346 08cf BD F2                   		movw	r10, ax
+ 1347 08d1 A8 0A                   		movw	ax, [sp+10]
+ 1348 08d3 BD F0                   		movw	r8, ax
+ 1349 08d5 AD F2                   		movw	ax, r10
+ 1350 08d7 46 F0                   		cmpw	ax, r8
+ 1351 08d9 71 FF                   		 xor1	CY, a.7
+ 1352 08db 71 77 F1                		 xor1	CY, r9.7
+ 1353 08de 61 D8                   		 sknc
+ 1354 08e0 EC CB 07 00             		 br	!!.L56
+ 1355                             	.L55:
+ 232:../src/r_main.c **** 	}
+ 233:../src/r_main.c **** 	return 0;
+ 1356                             		.loc 1 233 0 is_stmt 1
+ 1357 08e4 F6                      		clrw	ax
+ 1358 08e5 B8 00                   		movw	[sp], ax
+ 1359                             	.L51:
+ 1360 08e7 A8 00                   		movw	ax, [sp]
+ 1361 08e9 BD F0                   		movw	r8, ax
+ 234:../src/r_main.c **** }
+ 1362                             		.loc 1 234 0
+ 1363 08eb 10 02                   		addw	sp, #2
+ 1364 08ed D7                      		ret
+ 1365                             	.LFE3:
+ 1367                             		.global	_R_MAIN_COMMAND
+ 1369                             	_R_MAIN_COMMAND:
+ 1370                             	.LFB4:
+ 235:../src/r_main.c **** 
+ 236:../src/r_main.c **** void R_MAIN_COMMAND(void)  // for AT command
+ 237:../src/r_main.c **** {
+ 1371                             		.loc 1 237 0
+ 1372                             		; start of function
+ 1373                             		; outgoing: 8 bytes
+ 1374 08ee 20 08                   		subw	sp, #8
+ 1375                             	.LCFI3:
+ 238:../src/r_main.c ****    	if(flag && !count_flag)  // flag : old not same with now ; count_flag : all send already.
+ 1376                             		.loc 1 238 0
+ 1377 08f0 AF 00 00                		movw	ax, !_flag
+ 1378 08f3 BD F0                   		movw	r8, ax
+ 1379 08f5 44 00 00                		cmpw	ax, #0
+ 1380 08f8 61 F8                   		 sknz
+ 1381 08fa EC 33 09 00             		 br	!!.L58
+ 1382                             		.loc 1 238 0 is_stmt 0 discriminator 1
+ 1383 08fe AF 00 00                		movw	ax, !_count_flag
+ 1384 0901 BD F0                   		movw	r8, ax
+ 1385 0903 44 00 00                		cmpw	ax, #0
+ 1386 0906 61 E8                   		 skz
+ 1387 0908 EC 33 09 00             		 br	!!.L58
+ 239:../src/r_main.c ****     	{
+ 240:../src/r_main.c ****     		count_flag=1;  // you can start count
+ 1388                             		.loc 1 240 0 is_stmt 1
+ 1389 090c E6                      		onew	ax
+ 1390 090d BF 00 00                		movw	!_count_flag, ax
+ 241:../src/r_main.c ****     		flag=0;
+ 1391                             		.loc 1 241 0
+ 1392 0910 F6                      		clrw	ax
+ 1393 0911 BF 00 00                		movw	!_flag, ax
+ 242:../src/r_main.c ****     		R_MAIN_CLEAR(command);
+ 1394                             		.loc 1 242 0
+ 1395 0914 30 00 00                		movw	ax, #_command
+ 1396 0917 B8 00                   		movw	[sp], ax
+ 1397 0919 FC 00 00 00             		call	!!%code(_R_MAIN_CLEAR)
+ 243:../src/r_main.c ****     		R_UART0_Send(CIPSTART,39); //Send AT command to connect TCP.
+ 1398                             		.loc 1 243 0
+ 1399 091d 30 00 00                		movw	ax, #_CIPSTART
+ 1400 0920 B8 00                   		movw	[sp], ax
+ 1401 0922 30 27 00                		movw	ax, #39
+ 1402 0925 B8 02                   		movw	[sp+2], ax
+ 1403 0927 FC 00 00 00             		call	!!%code(_R_UART0_Send)
+ 244:../src/r_main.c ****     		tx_flag=0;
+ 1404                             		.loc 1 244 0
+ 1405 092b F6                      		clrw	ax
+ 1406 092c BF 00 00                		movw	!_tx_flag, ax
+ 245:../src/r_main.c ****     		count=0;
+ 1407                             		.loc 1 245 0
+ 1408 092f F6                      		clrw	ax
+ 1409 0930 BF 00 00                		movw	!_count, ax
+ 1410                             	.L58:
+ 246:../src/r_main.c ****     	}
+ 247:../src/r_main.c **** 
+ 248:../src/r_main.c ****     	  // 判斷AT指令成功與否 //
+ 249:../src/r_main.c **** 	if( FINDWORD(command,OK,i,2) )
+ 1411                             		.loc 1 249 0
+ 1412 0933 AF 00 00                		movw	ax, !_i
+ 1413 0936 BD F0                   		movw	r8, ax
+ 1414 0938 30 00 00                		movw	ax, #_command
+ 1415 093b B8 00                   		movw	[sp], ax
+ 1416 093d 30 00 00                		movw	ax, #_OK
+ 1417 0940 B8 02                   		movw	[sp+2], ax
+ 1418 0942 AD F0                   		movw	ax, r8
+ 1419 0944 B8 04                   		movw	[sp+4], ax
+ 1420 0946 30 02 00                		movw	ax, #2
+ 1421 0949 B8 06                   		movw	[sp+6], ax
+ 1422 094b FC 00 00 00             		call	!!%code(_FINDWORD)
+ 1423 094f AD F0                   		movw	ax, r8
+ 1424 0951 44 00 00                		cmpw	ax, #0
+ 1425 0954 61 F8                   		 sknz
+ 1426 0956 EC 85 09 00             		 br	!!.L59
+ 250:../src/r_main.c **** 		{
+ 251:../src/r_main.c **** 			ok_flag=1;
+ 1427                             		.loc 1 251 0
+ 1428 095a E6                      		onew	ax
+ 1429 095b BF 00 00                		movw	!_ok_flag, ax
+ 252:../src/r_main.c **** 			if(count_flag)
+ 1430                             		.loc 1 252 0
+ 1431 095e AF 00 00                		movw	ax, !_count_flag
+ 1432 0961 BD F0                   		movw	r8, ax
+ 1433 0963 44 00 00                		cmpw	ax, #0
+ 1434 0966 61 F8                   		 sknz
+ 1435 0968 EC 78 09 00             		 br	!!.L60
+ 253:../src/r_main.c **** 				count++;
+ 1436                             		.loc 1 253 0
+ 1437 096c AF 00 00                		movw	ax, !_count
+ 1438 096f BD F0                   		movw	r8, ax
+ 1439 0971 A6 F0                   		incw	r8
+ 1440 0973 AD F0                   		movw	ax, r8
+ 1441 0975 BF 00 00                		movw	!_count, ax
+ 1442                             	.L60:
+ 254:../src/r_main.c **** 			R_MAIN_CLEAR(command);
+ 1443                             		.loc 1 254 0
+ 1444 0978 30 00 00                		movw	ax, #_command
+ 1445 097b B8 00                   		movw	[sp], ax
+ 1446 097d FC 00 00 00             		call	!!%code(_R_MAIN_CLEAR)
+ 1447 0981 EC C8 0A 00             		br	!!.L61
+ 1448                             	.L59:
+ 255:../src/r_main.c **** 		}
+ 256:../src/r_main.c **** 	else if( FINDWORD(command,ERROR,i,5) ) //判斷錯誤
+ 1449                             		.loc 1 256 0
+ 1450 0985 AF 00 00                		movw	ax, !_i
+ 1451 0988 BD F0                   		movw	r8, ax
+ 1452 098a 30 00 00                		movw	ax, #_command
+ 1453 098d B8 00                   		movw	[sp], ax
+ 1454 098f 30 00 00                		movw	ax, #_ERROR
+ 1455 0992 B8 02                   		movw	[sp+2], ax
+ 1456 0994 AD F0                   		movw	ax, r8
+ 1457 0996 B8 04                   		movw	[sp+4], ax
+ 1458 0998 30 05 00                		movw	ax, #5
+ 1459 099b B8 06                   		movw	[sp+6], ax
+ 1460 099d FC 00 00 00             		call	!!%code(_FINDWORD)
+ 1461 09a1 AD F0                   		movw	ax, r8
+ 1462 09a3 44 00 00                		cmpw	ax, #0
+ 1463 09a6 61 F8                   		 sknz
+ 1464 09a8 EC FE 09 00             		 br	!!.L62
+ 257:../src/r_main.c **** 		 {
+ 258:../src/r_main.c **** 			if(count==0)  //在指令1的錯誤 可能已經連上
+ 1465                             		.loc 1 258 0
+ 1466 09ac AF 00 00                		movw	ax, !_count
+ 1467 09af BD F0                   		movw	r8, ax
+ 1468 09b1 44 00 00                		cmpw	ax, #0
+ 1469 09b4 61 E8                   		 skz
+ 1470 09b6 EC D7 09 00             		 br	!!.L63
+ 259:../src/r_main.c **** 			  {
+ 260:../src/r_main.c **** 				ok_flag=1;
+ 1471                             		.loc 1 260 0
+ 1472 09ba E6                      		onew	ax
+ 1473 09bb BF 00 00                		movw	!_ok_flag, ax
+ 261:../src/r_main.c **** 				count++;
+ 1474                             		.loc 1 261 0
+ 1475 09be AF 00 00                		movw	ax, !_count
+ 1476 09c1 BD F0                   		movw	r8, ax
+ 1477 09c3 A6 F0                   		incw	r8
+ 1478 09c5 AD F0                   		movw	ax, r8
+ 1479 09c7 BF 00 00                		movw	!_count, ax
+ 262:../src/r_main.c **** 				R_MAIN_CLEAR(command);
+ 1480                             		.loc 1 262 0
+ 1481 09ca 30 00 00                		movw	ax, #_command
+ 1482 09cd B8 00                   		movw	[sp], ax
+ 1483 09cf FC 00 00 00             		call	!!%code(_R_MAIN_CLEAR)
+ 1484 09d3 EC C8 0A 00             		br	!!.L61
+ 1485                             	.L63:
+ 263:../src/r_main.c **** 			  }
+ 264:../src/r_main.c **** 			else
+ 265:../src/r_main.c **** 			{
+ 266:../src/r_main.c **** 				ok_flag=0;
+ 1486                             		.loc 1 266 0
+ 1487 09d7 F6                      		clrw	ax
+ 1488 09d8 BF 00 00                		movw	!_ok_flag, ax
+ 267:../src/r_main.c **** 				R_MAIN_CLEAR(command);
+ 1489                             		.loc 1 267 0
+ 1490 09db 30 00 00                		movw	ax, #_command
+ 1491 09de B8 00                   		movw	[sp], ax
+ 1492 09e0 FC 00 00 00             		call	!!%code(_R_MAIN_CLEAR)
+ 268:../src/r_main.c **** 				R_UART0_Send(CIPSTART,39);
+ 1493                             		.loc 1 268 0
+ 1494 09e4 30 00 00                		movw	ax, #_CIPSTART
+ 1495 09e7 B8 00                   		movw	[sp], ax
+ 1496 09e9 30 27 00                		movw	ax, #39
+ 1497 09ec B8 02                   		movw	[sp+2], ax
+ 1498 09ee FC 00 00 00             		call	!!%code(_R_UART0_Send)
+ 269:../src/r_main.c **** 				tx_flag=0;
+ 1499                             		.loc 1 269 0
+ 1500 09f2 F6                      		clrw	ax
+ 1501 09f3 BF 00 00                		movw	!_tx_flag, ax
+ 270:../src/r_main.c **** 				count=0;
+ 1502                             		.loc 1 270 0
+ 1503 09f6 F6                      		clrw	ax
+ 1504 09f7 BF 00 00                		movw	!_count, ax
+ 1505 09fa EC C8 0A 00             		br	!!.L61
+ 1506                             	.L62:
+ 271:../src/r_main.c **** 			}
+ 272:../src/r_main.c **** 		 }
+ 273:../src/r_main.c **** 	else if( FINDWORD(command,CLOSED,i,6) || FINDWORD(command,FAIL,i,4))
+ 1507                             		.loc 1 273 0
+ 1508 09fe AF 00 00                		movw	ax, !_i
+ 1509 0a01 BD F0                   		movw	r8, ax
+ 1510 0a03 30 00 00                		movw	ax, #_command
+ 1511 0a06 B8 00                   		movw	[sp], ax
+ 1512 0a08 30 00 00                		movw	ax, #_CLOSED
+ 1513 0a0b B8 02                   		movw	[sp+2], ax
+ 1514 0a0d AD F0                   		movw	ax, r8
+ 1515 0a0f B8 04                   		movw	[sp+4], ax
+ 1516 0a11 30 06 00                		movw	ax, #6
+ 1517 0a14 B8 06                   		movw	[sp+6], ax
+ 1518 0a16 FC 00 00 00             		call	!!%code(_FINDWORD)
+ 1519 0a1a AD F0                   		movw	ax, r8
+ 1520 0a1c 44 00 00                		cmpw	ax, #0
+ 1521 0a1f 61 E8                   		 skz
+ 1522 0a21 EC 4C 0A 00             		 br	!!.L65
+ 1523                             		.loc 1 273 0 is_stmt 0 discriminator 1
+ 1524 0a25 AF 00 00                		movw	ax, !_i
+ 1525 0a28 BD F0                   		movw	r8, ax
+ 1526 0a2a 30 00 00                		movw	ax, #_command
+ 1527 0a2d B8 00                   		movw	[sp], ax
+ 1528 0a2f 30 00 00                		movw	ax, #_FAIL
+ 1529 0a32 B8 02                   		movw	[sp+2], ax
+ 1530 0a34 AD F0                   		movw	ax, r8
+ 1531 0a36 B8 04                   		movw	[sp+4], ax
+ 1532 0a38 30 04 00                		movw	ax, #4
+ 1533 0a3b B8 06                   		movw	[sp+6], ax
+ 1534 0a3d FC 00 00 00             		call	!!%code(_FINDWORD)
+ 1535 0a41 AD F0                   		movw	ax, r8
+ 1536 0a43 44 00 00                		cmpw	ax, #0
+ 1537 0a46 61 F8                   		 sknz
+ 1538 0a48 EC 58 0A 00             		 br	!!.L66
+ 1539                             	.L65:
+ 274:../src/r_main.c **** 			{ count_flag=0;
+ 1540                             		.loc 1 274 0 is_stmt 1
+ 1541 0a4c F6                      		clrw	ax
+ 1542 0a4d BF 00 00                		movw	!_count_flag, ax
+ 275:../src/r_main.c **** 			  ok_flag=0;
+ 1543                             		.loc 1 275 0
+ 1544 0a50 F6                      		clrw	ax
+ 1545 0a51 BF 00 00                		movw	!_ok_flag, ax
+ 1546 0a54 EC C8 0A 00             		br	!!.L61
+ 1547                             	.L66:
+ 276:../src/r_main.c **** 			}
+ 277:../src/r_main.c **** 	else if( FINDWORD(command,time,i,5))
+ 1548                             		.loc 1 277 0
+ 1549 0a58 AF 00 00                		movw	ax, !_i
+ 1550 0a5b BD F0                   		movw	r8, ax
+ 1551 0a5d 30 00 00                		movw	ax, #_command
+ 1552 0a60 B8 00                   		movw	[sp], ax
+ 1553 0a62 30 00 00                		movw	ax, #_time
+ 1554 0a65 B8 02                   		movw	[sp+2], ax
+ 1555 0a67 AD F0                   		movw	ax, r8
+ 1556 0a69 B8 04                   		movw	[sp+4], ax
+ 1557 0a6b 30 05 00                		movw	ax, #5
+ 1558 0a6e B8 06                   		movw	[sp+6], ax
+ 1559 0a70 FC 00 00 00             		call	!!%code(_FINDWORD)
+ 1560 0a74 AD F0                   		movw	ax, r8
+ 1561 0a76 44 00 00                		cmpw	ax, #0
+ 1562 0a79 61 F8                   		 sknz
+ 1563 0a7b EC C8 0A 00             		 br	!!.L61
+ 278:../src/r_main.c **** 			{   sec=0;
+ 1564                             		.loc 1 278 0
+ 1565 0a7f F6                      		clrw	ax
+ 1566 0a80 BF 00 00                		movw	!_sec, ax
+ 279:../src/r_main.c **** 		    	for(j=0;j<19;j++)
+ 1567                             		.loc 1 279 0
+ 1568 0a83 F6                      		clrw	ax
+ 1569 0a84 BF 00 00                		movw	!_j, ax
+ 1570 0a87 EC B8 0A 00             		br	!!.L67
+ 1571                             	.L68:
+ 280:../src/r_main.c **** 		    		TIME[j]=command[t+j];
+ 1572                             		.loc 1 280 0 discriminator 3
+ 1573 0a8b AF 00 00                		movw	ax, !_j
+ 1574 0a8e BD F0                   		movw	r8, ax
+ 1575 0a90 AF 00 00                		movw	ax, !_t
+ 1576 0a93 BD F4                   		movw	r12, ax
+ 1577 0a95 AF 00 00                		movw	ax, !_j
+ 1578 0a98 BD F2                   		movw	r10, ax
+ 1579 0a9a AD F4                   		movw	ax, r12
+ 1580 0a9c 06 F2                   		addw	ax, r10
+ 1581 0a9e BD F2                   		movw	r10, ax
+ 1582 0aa0 04 00 00                		addw	ax, #_command
+ 1583 0aa3 16                      		movw	hl, ax
+ 1584 0aa4 8B                      		mov	a, [hl]
+ 1585 0aa5 9D F2                   		mov	r10, a
+ 1586 0aa7 DA F0                   		movw	bc, r8
+ 1587 0aa9 48 00 00                		mov	_TIME[bc], a
+ 279:../src/r_main.c **** 		    	for(j=0;j<19;j++)
+ 1588                             		.loc 1 279 0 discriminator 3
+ 1589 0aac AF 00 00                		movw	ax, !_j
+ 1590 0aaf BD F0                   		movw	r8, ax
+ 1591 0ab1 A6 F0                   		incw	r8
+ 1592 0ab3 AD F0                   		movw	ax, r8
+ 1593 0ab5 BF 00 00                		movw	!_j, ax
+ 1594                             	.L67:
+ 279:../src/r_main.c **** 		    	for(j=0;j<19;j++)
+ 1595                             		.loc 1 279 0 is_stmt 0 discriminator 1
+ 1596 0ab8 AF 00 00                		movw	ax, !_j
+ 1597 0abb BD F0                   		movw	r8, ax
+ 1598 0abd 44 12 00                		cmpw	ax, #18
+ 1599 0ac0 71 FF                   		 xor1	CY, a.7
+ 1600 0ac2 61 E3                   		 skh
+ 1601 0ac4 EC 8B 0A 00             		 br	!!.L68
+ 1602                             	.L61:
+ 281:../src/r_main.c **** 			}
+ 282:../src/r_main.c **** 
+ 283:../src/r_main.c **** 	// 確定有回傳OK 才送下一個指令 //
+ 284:../src/r_main.c **** 		if(tx_flag && ok_flag)
+ 1603                             		.loc 1 284 0 is_stmt 1
+ 1604 0ac8 AF 00 00                		movw	ax, !_tx_flag
+ 1605 0acb BD F0                   		movw	r8, ax
+ 1606 0acd 44 00 00                		cmpw	ax, #0
+ 1607 0ad0 61 F8                   		 sknz
+ 1608 0ad2 EC 30 0B 00             		 br	!!.L57
+ 1609                             		.loc 1 284 0 is_stmt 0 discriminator 1
+ 1610 0ad6 AF 00 00                		movw	ax, !_ok_flag
+ 1611 0ad9 BD F0                   		movw	r8, ax
+ 1612 0adb 44 00 00                		cmpw	ax, #0
+ 1613 0ade 61 F8                   		 sknz
+ 1614 0ae0 EC 30 0B 00             		 br	!!.L57
+ 285:../src/r_main.c **** 		{
+ 286:../src/r_main.c **** 			if(count==1)
+ 1615                             		.loc 1 286 0 is_stmt 1
+ 1616 0ae4 AF 00 00                		movw	ax, !_count
+ 1617 0ae7 BD F0                   		movw	r8, ax
+ 1618 0ae9 44 01 00                		cmpw	ax, #1
+ 1619 0aec 61 E8                   		 skz
+ 1620 0aee EC 0C 0B 00             		 br	!!.L70
+ 287:../src/r_main.c **** 				{
+ 288:../src/r_main.c **** 				    R_UART0_Send(CIPSEND,16);
+ 1621                             		.loc 1 288 0
+ 1622 0af2 30 00 00                		movw	ax, #_CIPSEND
+ 1623 0af5 B8 00                   		movw	[sp], ax
+ 1624 0af7 30 10 00                		movw	ax, #16
+ 1625 0afa B8 02                   		movw	[sp+2], ax
+ 1626 0afc FC 00 00 00             		call	!!%code(_R_UART0_Send)
+ 289:../src/r_main.c **** 					tx_flag=0;
+ 1627                             		.loc 1 289 0
+ 1628 0b00 F6                      		clrw	ax
+ 1629 0b01 BF 00 00                		movw	!_tx_flag, ax
+ 290:../src/r_main.c **** 					ok_flag=0;
+ 1630                             		.loc 1 290 0
+ 1631 0b04 F6                      		clrw	ax
+ 1632 0b05 BF 00 00                		movw	!_ok_flag, ax
+ 1633 0b08 EC 30 0B 00             		br	!!.L57
+ 1634                             	.L70:
+ 291:../src/r_main.c **** 				}
+ 292:../src/r_main.c **** 			else if(count==2)
+ 1635                             		.loc 1 292 0
+ 1636 0b0c AF 00 00                		movw	ax, !_count
+ 1637 0b0f BD F0                   		movw	r8, ax
+ 1638 0b11 44 02 00                		cmpw	ax, #2
+ 1639 0b14 61 E8                   		 skz
+ 1640 0b16 EC 30 0B 00             		 br	!!.L57
+ 293:../src/r_main.c **** 				{
+ 294:../src/r_main.c **** 				    R_UART0_Send(GET,500);
+ 1641                             		.loc 1 294 0
+ 1642 0b1a 30 00 00                		movw	ax, #_GET
+ 1643 0b1d B8 00                   		movw	[sp], ax
+ 1644 0b1f 30 F4 01                		movw	ax, #500
+ 1645 0b22 B8 02                   		movw	[sp+2], ax
+ 1646 0b24 FC 00 00 00             		call	!!%code(_R_UART0_Send)
+ 295:../src/r_main.c **** 					tx_flag=0;
+ 1647                             		.loc 1 295 0
+ 1648 0b28 F6                      		clrw	ax
+ 1649 0b29 BF 00 00                		movw	!_tx_flag, ax
+ 296:../src/r_main.c **** 					ok_flag=0;
+ 1650                             		.loc 1 296 0
+ 1651 0b2c F6                      		clrw	ax
+ 1652 0b2d BF 00 00                		movw	!_ok_flag, ax
+ 1653                             	.L57:
+ 297:../src/r_main.c **** 				}
+ 298:../src/r_main.c **** 		}
+ 299:../src/r_main.c **** 
+ 300:../src/r_main.c **** }
+ 1654                             		.loc 1 300 0
+ 1655 0b30 10 08                   		addw	sp, #8
+ 1656 0b32 D7                      		ret
+ 1657                             	.LFE4:
+ 1733                             	.Letext0:
+ 1734                             		.file 2 "../src/iodefine.h"
